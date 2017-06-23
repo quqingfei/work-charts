@@ -1,0 +1,78 @@
+*{margin: 0;padding: 0;}
+body,html{height: 100%;width: 100%;font-family: '微软雅黑';background: #ececec;margin: 0 auto;}
+header{position: relative;overflow: hidden;}
+.banner{ width: 100%;}
+.banner img{height: 100%;width: 100%;display: block;}
+.involvement {position: absolute;bottom: 10px;left: 16px;color: white;text-shadow: 0px 0px 3px #3C3C3C;-webkit-text-shadow: 0px 0px 3px #3C3C3C;-o-text-shadow: 0px 0px 3px #3C3C3C;-moz-text-shadow: 0px 0px 3px #3C3C3C;-ms-text-shadow: 0px 0px 3px #3C3C3C;font-size: 1.36rem;}
+.description {padding: 1.4rem 1rem 0 1rem;font-size: 1.2rem;text-align:justify; overflow:hidden; text-overflow:ellipsis;-webkit-box-orient:vertical;background: white;color: #666;}
+.addoraient{display: -webkit-box;}
+.description span{color: #4a90e2;}
+.dowms{width: 100%;background: white;border-bottom: 1px solid #cccccc;}
+.more {text-align: center;font-size: 1rem;color: #999999;padding: 5px 0;background: white;  width: 53px;  margin: 0 auto; position: relative;display: none;}
+v {
+  position: absolute;
+  width: 10px;
+  height: 18px;
+  display: block;
+  background: url(../images/down.svg) no-repeat center center;      
+}
+.v{display: block;transform:rotate(180deg);
+    -ms-transform:rotate(180deg); 	/* IE 9 */
+    -moz-transform:rotate(180deg); 	/* Firefox */
+    -webkit-transform:rotate(180deg); /* Safari 和 Chrome */
+    -o-transform:rotate(180deg); 	/* Opera */}
+.moreAticle {overflow: hidden;padding-bottom: 80px;}
+.article {overflow: hidden;float: left;width: 47%;border-radius: 5px;margin: 2% 0 0 2%;border: 1px solid #e0e0e0;box-sizing: border-box;}
+.articleImg {overflow: hidden;position: relative;}
+.articleImgOne {width: 100%;position: relative;}
+.articleImgOne img{display: block;height: 100%;width: 100%;}
+.tsan {position: absolute;bottom: 10px;left: 0px;}
+.tsan a{background: url(../images/zks_un_appraise_shadow_icon.png) no-repeat 3px center;display: block;text-decoration: none;color: white;text-shadow: 0px 0px 3px #3C3C3C;background-size: 18px;padding-left: 24px;font-size: 8px;height: 20px;line-height: 20px;}
+.discuss {position: absolute;bottom: 10px;right: 5px;}
+.discuss a{background: url(../images/zks_reply_msg_shadow_icon.png) no-repeat 3px center;display: block;text-decoration: none;color: white;text-shadow: 0px 0px 3px #3C3C3C;background-size: 18px;padding-left: 25px;font-size: 8px;line-height: 20px;height: 20px;}
+.userInfo {overflow: hidden;width: 100%;height: 44px;background: white;}
+.headimg {box-sizing: border-box;width: 24px;height: 24px;border-radius: 50%;float: left;overflow: hidden;    margin: 10px 5px 0 5px;}
+.headimg img{width: 100%;height: 100%;display: block;}
+.userDetile {float: left;overflow: hidden; width: 72%;}
+.username{font-size: 10px;text-align:justify; overflow:hidden; text-overflow:ellipsis;text-overflow: ellipsis;white-space:nowrap;color: #292929;height: 24px;line-height: 32px;}
+.userdescription {font-size: 10px;text-align:justify; overflow:hidden; text-overflow:ellipsis;text-overflow: ellipsis;white-space:nowrap;color: #787878;}
+.man {border: 1px solid #0588cb}
+.faman {border: 1px solid #ed4c52}
+.discussBtn {display: block; background:#49badc;height: 50px;width: 100%;line-height: 50px;position: fixed;bottom: 0;left: 0;text-align: center;padding-left: 17px;}
+.discussBtn div{display: block;width: 130px;margin: 0 auto; height: 50px;line-height: 50px;font-size: 17px;background: url(../images/adit.png) no-repeat 0% center;text-decoration: none;color: white; background-size: 22px;}
+#downloadBox {
+    display: none;
+}
+#downloadBox {
+  z-index: 999;
+  top: 0;
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  background: #fff;
+  padding: 10px 0;
+}
+#downloadBox img {
+  display: inline-block;
+  height: 30px;
+  margin: 0 10px;
+}
+#downloadBox span {
+  vertical-align: top;
+  height: 30px;
+  line-height: 30px;
+  color: #666;
+  font-size: 12px;
+}
+#downloadBox a {
+  float: right;
+  display: block;
+  font-size: 12px;
+  color: #fff;
+  background: #FBB84A;
+  line-height: 30px;
+  padding: 0 10px;
+  margin: 0px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+}

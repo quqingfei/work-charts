@@ -1,0 +1,237 @@
+html,body{
+	font-family:"Microsoft YaHei","SimHei","STHei","Helvetica Neue", Helvetica, Arial, sans-serif;
+	line-height:100%;
+	width:100%;
+	height:100%;
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+.father{
+	width:100%;
+	height:auto;
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+.father_auto{
+	width:100%;
+	height:auto;
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+.list{
+	width:100%;
+	height:auto;
+	overflow:hidden;
+}
+p{
+	margin:0px;
+	padding:0px;
+}
+input{
+	outline:none;
+	background-color:#fff;
+	border:1px solid #ADADAD;
+	margin:0;
+	padding:0;
+	-webkit-appearance:none;
+	-webkit-tap-highlight-color:rgba(255,0,0,0);
+	-moz-border-radius:6px;
+  	-webkit-border-radius:6px;
+  	border-radius:6px;
+}
+div{
+	margin:0;
+	padding:0;
+}
+.showDiv{
+	width:100%;
+	height:150px;
+	margin:0px auto 10px;
+	background-color:#C9FFC3;
+	display:none;
+}
+.showTips{
+	width:100%;
+	height:80px;
+	margin:0px auto;
+	padding:20px 0px;
+	font-size:14px;
+	text-align:center;
+	color:#57974D;
+}
+.tip1{
+	width:100%;
+	height:20px;
+	line-height:20px;
+}
+.tip2{
+	width:100%;
+	height:20px;
+	line-height:20px;
+	margin-top:10px;
+}
+.tip3{
+	width:100%;
+	height:20px;
+	line-height:20px;
+	color:#9E6B4C;
+	margin-top:10px;
+}
+.errorShow{
+	width:100%;
+	height:80px;
+	line-height:80px;
+}
+.add{
+	width:92%;
+	height:230px;
+	padding:0 4%;
+	margin:0px auto 10px;
+}
+.phoneDiv{
+	position:relative;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:35px;
+}
+.phone{
+	height:100%;
+	position:absolute;
+	left:0px;
+	right:70px;
+	margin:0px auto;
+	vertical-align:middle;
+}
+.phone_input{
+	width:96%;
+	height:33px;
+	line-height:33px;
+	padding:0% 1%;
+	font-size:13px;
+	color: #959595;
+	padding:0px;
+}
+.getCode{
+	width:60px;
+	height:35px;
+	line-height:35px;
+	font-size:13px;
+	float:right;
+	text-align:center;
+	background:#409739;
+	color:#fff;
+	vertical-align:middle;
+	-moz-border-radius:6px;
+  	-webkit-border-radius:6px;
+  	border-radius:6px;
+}
+.codeDiv{
+	position:relative;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:35px;
+	margin-top:10px;
+}
+.code{
+	height:100%;
+	position:absolute;
+	left:0px;
+	right:70px;
+	margin:0px auto;
+	vertical-align:middle;
+}
+.code_input{
+	width:96%;
+	height:33px;
+	line-height:33px;
+	padding:0 1%;
+	font-size:13px;
+	color: #959595;
+	padding:0px;
+}
+.addImg{
+	width:120px;
+	height:120px;
+	margin:10px auto;
+	display:block;
+}
+.shieldDiv{
+	position:absolute;
+	top:0%;
+	left:0;
+	width:100%;
+	height:120%;
+	background-color:#999999;
+	-webkit-opacity: 0.6;   
+    -moz-opacity: 0.6;  
+    -khtml-opacity: 0.6;    
+    opacity:0.6;
+    filter:alpha(opacity=60);
+    display:none;
+    z-index:1000;
+}
+.tips{
+	position:absolute;
+	width:70%;
+	height:6.4em;
+	top:50%;
+	left:15%;
+	margin:auto;
+	margin-top:-3.2em;
+	background-color:#fff;
+	-moz-border-radius:0.5em; /* Firefox */
+  	-webkit-border-radius:0.5em; /* Safari 和 Chrome */
+ 	border-radius: 0.5em; /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */
+ 	border:#666666 1px solid;
+ 	display:none;
+ 	z-index:9999;
+}
+.tipsMessage{
+	width:90%;
+	height:3em;
+	padding:0% 5%;
+	line-height:3em;
+	font-size:1em;
+	color:#666666;
+	margin:0px;
+	text-align:center;
+}
+.tipsChoose{
+	width:90%;
+	height:3em;
+	padding:0% 5%;
+}
+.tipsCancle{
+	width:45%;
+	height:2em;
+	line-height:2em;
+	position:relative;
+	font-size:1em;
+	top:0.5em;
+	left:0em;
+	float:left;
+	background-color:#666666;
+	color:#fff;
+	text-align:center;
+	-moz-border-radius:0.3em; /* Firefox */
+  	-webkit-border-radius:0.3em; /* Safari 和 Chrome */
+ 	border-radius: 0.3em; /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */
+}
+.tipsSure{
+	width:45%;
+	height:2em;
+	line-height:2em;
+	position:relative;
+	font-size:1em;
+	top:0.5em;
+	left:0em;
+	margin:auto;
+	background-color:#333333;
+	color:#FFD600;
+	text-align:center;
+	-moz-border-radius:0.3em; /* Firefox */
+  	-webkit-border-radius:0.3em; /* Safari 和 Chrome */
+ 	border-radius: 0.3em; /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */
+}

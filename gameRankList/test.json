@@ -1,0 +1,126 @@
+{
+    "INFO": ""
+    , "STATUS": true
+    , "fatBurnGame": [{
+        "compareUnit": "distance"
+        , "currentCompareData": 20766
+        , "currentTargetData": 3118
+        , "deviceId": "79"
+        , "endTargetData": 4103
+        , "gameId": "1465006202335357101"
+        , "gameName": "超级耐力王"
+        , "gameType": 1
+        , "id": "1481371693597389500"
+        , "isFinished": "n"
+        , "isHot": "n"
+        , "likes": 11
+        , "startCompareData": 2730
+        , "startTargetData": 503
+        , "targetUnit": "time"
+        , "userIcon": "2016114-233614702.jpg"
+        , "userId": "1476172440209306400"
+        , "userName": "超级耐力王"
+        , "userSex": "F"
+    }, {
+        "compareUnit": "distance"
+        , "currentCompareData": 16566
+        , "currentTargetData": 2709
+        , "deviceId": "141"
+        , "endTargetData": 4391
+        , "gameId": "1465006202335357101"
+        , "gameName": "超级耐力王"
+        , "gameType": 1
+        , "id": "1470568021439573600"
+        , "isFinished": "n"
+        , "isHot": "n"
+        , "likes": 3
+        , "startCompareData": 4032
+        , "startTargetData": 791
+        , "targetUnit": "time"
+        , "userIcon": "2016726-121649642.jpg"
+        , "userId": "1462967952999499901"
+        , "userName": "雨后阳光"
+        , "userSex": "F"
+    }, {
+        "compareUnit": "distance"
+        , "currentCompareData": 1686
+        , "currentTargetData": 294
+        , "deviceId": "110"
+        , "endTargetData": 3758
+        , "gameId": "1465006202335357101"
+        , "gameName": "超级耐力王"
+        , "gameType": 1
+        , "id": "1469361913872313600"
+        , "isFinished": "n"
+        , "isHot": "n"
+        , "likes": 1
+        , "startCompareData": 888
+        , "startTargetData": 158
+        , "targetUnit": "time"
+        , "userIcon": "2016513-203428884.jpg"
+        , "userId": "1463135883873864201"
+        , "userName": "Eren"
+        , "userSex": "M"
+    }, {
+        "compareUnit": "distance"
+        , "currentCompareData": 1134
+        , "currentTargetData": 140
+        , "deviceId": "250"
+        , "endTargetData": 3714
+        , "gameId": "1465006202335357101"
+        , "gameName": "超级耐力王"
+        , "gameType": 1
+        , "id": "1465359106137187501"
+        , "isFinished": "n"
+        , "isHot": "n"
+        , "likes": 2
+        , "startCompareData": 876
+        , "startTargetData": 114
+        , "targetUnit": "time"
+        , "userIcon": "2016412-18471162.jpg"
+        , "userId": "1459136048865897001"
+        , "userName": "夏夏"
+        , "userSex": "F"
+    }, {
+        "compareUnit": "distance"
+        , "currentCompareData": 78
+        , "currentTargetData": 14
+        , "deviceId": "2"
+        , "endTargetData": 3614
+        , "gameId": "1465006202335357101"
+        , "gameName": "超级耐力王"
+        , "gameType": 1
+        , "id": "1465803813961212301"
+        , "isFinished": "n"
+        , "isHot": "n"
+        , "likes": 2
+        , "startCompareData": 78
+        , "startTargetData": 14
+        , "targetUnit": "time"
+        , "userIcon": "201648-171543510.jpg"
+        , "userId": "1459853685898661401"
+        , "userName": "admin"
+        , "userSex": "M"
+    }, {
+        "compareUnit": "distance"
+        , "currentCompareData": 1284
+        , "currentTargetData": 244
+        , "deviceId": "60"
+        , "endTargetData": 3777
+        , "gameId": "1465006202335357101"
+        , "gameName": "超级耐力王"
+        , "gameType": 1
+        , "id": "1465375276965107901"
+        , "isFinished": "n"
+        , "isHot": "n"
+        , "likes": 2
+        , "startCompareData": 1188
+        , "startTargetData": 177
+        , "targetUnit": "time"
+        , "userIcon": "201623-171755518.jpg"
+        , "userId": "1454491075739154801"
+        , "userName": "测试测试"
+        , "userSex": "M"
+    }]
+    , "size": 6
+}

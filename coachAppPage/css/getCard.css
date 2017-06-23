@@ -1,0 +1,253 @@
+@import url(normal.css);
+* {
+    padding: 0;
+    margin: 0;
+}
+header{
+    /*display: none;*/
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    width: 100%;
+    height: 0.75rem ;
+    line-height: 0.75rem;
+    background: #fff;
+    padding: 0.25rem 0;
+    box-shadow: 0px 1px 5px #666;
+}
+
+header img{
+    display: inline-block;
+    height: 0.75rem;
+    margin: 0 0.25rem;
+}
+
+header p{
+    vertical-align: top;
+    display: inline-block;
+    height: 0.75rem;
+    line-height: 0.75rem !important;
+    color: #666;
+}
+
+header a{
+    float: right;
+    display: block;
+    color: #fff;
+    background: #49badc;
+    line-height: 0.75rem !important;
+    padding: 0 0.25rem;
+    margin: 0px 0.25rem;
+    border-radius: 0.125rem;
+    text-decoration:none;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+}
+
+input {
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 22px;
+}
+
+[data-dpr='2'] input {
+    font-size: 28px;
+    line-height: 44px;
+}
+
+[data-dpr='3'] input {
+    font-size: 42px;
+    line-height: 66px;
+}
+
+select {
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 22px;
+}
+
+[data-dpr='2'] select {
+    font-size: 28px;
+    line-height: 44px;
+}
+
+[data-dpr='3'] select {
+    font-size: 42px;
+    line-height: 66px;
+}
+
+a {
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 22px;
+}
+
+[data-dpr='2'] a {
+    font-size: 28px;
+    line-height: 44px;
+}
+
+[data-dpr='3'] a {
+    font-size: 42px;
+    line-height: 66px;
+}
+
+label {
+    display: inline-block;
+    width: 2rem;
+    margin-left: 0.5rem;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 22px;
+}
+
+[data-dpr='2'] label {
+    font-size: 28px;
+    line-height: 44px;
+}
+
+[data-dpr='3'] label {
+    font-size: 42px;
+    line-height: 66px;
+}
+
+.step-3,
+.step-2 {
+    display: none;
+}
+
+.step-1 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('../img/bg1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.step-2 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #EFEFEF;
+}
+
+.setp-3 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.sure {
+    position: absolute;
+    display: block;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding:0.25rem 0;
+    text-align: center;
+    background: #49badc;
+    color: #fff;
+}
+
+.inputs {
+    position: absolute;
+    width: 9rem;
+    height: 2.5rem;
+    margin-top: -1.25rem;
+    margin-left:-4.5rem;
+    top: 50%;
+    left: 50%;
+
+}
+
+.input-1 {
+    box-sizing: border-box;
+    border: 1px solid #999;
+    border-radius: 0.25rem;
+    height: 1.0rem;
+    line-height: 1.0rem;
+    padding-left: 1rem;
+    margin-bottom: 0.25rem;
+    background-color: rgba(0, 0, 0, 0);
+    color: #fff;
+}
+
+#phone {
+    width: 100%;
+    background-image: url('../img/phone.png');
+    background-repeat: no-repeat;
+    background-size: 0.5rem;
+    background-position: center left 0.2rem;
+    /*background: url(../img/phone.png) no-repeat center left 0.1rem;*/
+}
+
+#code {
+    width: 6rem;
+    background-image: url('../img/code.png');
+    background-repeat: no-repeat;
+    background-size: 0.5rem;
+    background-position: center left 0.2rem;
+}
+
+#codeGet {
+    box-sizing: border-box;
+    /*border: 1px solid #49badc;*/
+    float: right;
+    display: inline-block;
+    width: 2.7rem;
+    height: 1rem;
+    line-height: 1rem;
+    text-align: center;
+    background: #49badc;
+    color: #fff;
+    border-radius: 0.25rem;
+}
+
+.input-item {
+    margin: 0.25rem 0;
+}
+
+.input-2 {
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 0.15rem;
+    width: 7rem;
+    height: 0.75rem;
+    line-height: 0.75rem;
+    padding-left: 0.25rem;
+    background: #fff;
+}
+
+#name {
+    margin-top: 1.5rem;
+}
+
+#sex {
+    background-image: url('../img/sex.png');
+    background-repeat: no-repeat;
+    background-size: 0.3rem;
+    background-position: center right 0.2rem;
+}
+
+#birth {
+    background-image: url('../img/birth.png');
+    background-repeat: no-repeat;
+    background-size: 0.3rem;
+    background-position: center right 0.2rem;
+}
+
+#succ{
+	position: relative;
+	margin: 7rem auto 0;
+	text-align: center;
+}
+
+#succ img{
+	height: 1rem;
+	margin-bottom: 0.125rem;
+}

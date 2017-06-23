@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="https://cdn.rawgit.com/patosai/tree-multiselect/v2.1.3/dist/jquery.tree-multiselect.min.css">
+<script src="js/jquery-1.8.3.min.js"></script>
+<body>
+<select id="demo1" multiple="multiple">
+    <option value="1-0" data-section="全部" data-index="" data-description="客户信息、开卡、储值、消费和租赁">超级入口</option>
+    <option value="11-0" data-section="全部" data-index="" data-description="会籍客户沟通信息及操作">资源管理</option>
+<!--    <option value="3-0" data-section="全部" data-index="">体测管理</option>-->
+    <option value="3-1" data-section="全部/体测管理" data-index="">体测记录</option>
+    <option value="3-2" data-section="全部/体测管理" data-index="">效果达成率</option>
+<!--    <option value="4-0" data-section="全部" data-index="">会员管理</option>-->
+    <option value="4-1" data-section="全部/会员管理" data-index="">客户管理</option>
+    <option value="4-2" data-section="全部/会员管理" data-index="">会员卡管理</option>
+    <option value="4-3" data-section="全部/会员管理" data-index="">开卡</option>
+    <option value="4-4" data-section="全部/会员管理" data-index="">停卡</option>
+    <option value="4-5" data-section="全部/会员管理" data-index="">转卡</option>
+<!--    <option value="5-0" data-section="全部" data-index="">课程管理</option>-->
+    <option value="5-1" data-section="全部/课程管理" data-index="">公开课程管理</option>
+    <option value="5-2" data-section="全部/课程管理" data-index="">社群课程排期</option>
+    <option value="5-3" data-section="全部/课程管理" data-index="">私教购买</option>
+    <option value="5-4" data-section="全部/课程管理" data-index="">私教课程</option>
+    <option value="5-5" data-section="全部/课程管理" data-index="">课程设置</option>
+    <option value="5-6" data-section="全部/课程管理" data-index="">学员评价</option>
+<!--    <option value="6-0" data-section="全部" data-index="">消费管理</option>-->
+    <option value="6-1" data-section="全部/消费管理" data-index="">充值</option>
+    <option value="6-2" data-section="全部/消费管理" data-index="">充值记录</option>
+    <option value="6-3" data-section="全部/消费管理" data-index="">消费</option>
+    <option value="6-4" data-section="全部/消费管理" data-index="">消费记录</option>
+    <option value="6-5" data-section="全部/消费管理" data-index="">余额查询</option>
+<!--    <option value="10-0" data-section="全部" data-index="">兑换管理</option>-->
+    <option value="10-1" data-section="全部/兑换管理" data-index="">积分兑换</option>
+    <option value="10-2" data-section="全部/兑换管理" data-index="">积分记录</option>
+<!--    <option value="7-0" data-section="全部" data-index="">租赁管理</option>-->
+    <option value="7-1" data-section="全部/租赁管理" data-index="">租赁录入</option>
+    <option value="7-2" data-section="全部/租赁管理" data-index="">租赁归还/管理</option>
+    <option value="8-0" data-section="全部" data-index="">文章推送</option>
+<!--    <option value="9-0" data-section="全部" data-index="">考勤管理</option>-->
+    <option value="9-1" data-section="全部/考勤管理" data-index="">员工考勤记录</option>
+    <option value="9-2" data-section="全部/考勤管理" data-index="">员工考勤统计</option>
+<!--    <option value="0-0" data-section="全部" data-index="">高级</option>    -->
+    <option value="0-1" data-section="全部/高级" data-index="" data-description="月、日营业额占比及详情">数据统计</option>
+    <option value="0-1" data-section="全部/高级" data-index="">员工管理</option>
+    <option value="0-1" data-section="全部/高级" data-index="">角色管理</option>
+    <option value="0-1" data-section="全部/高级" data-index="">卡种管理</option>
+    <option value="0-1" data-section="全部/高级" data-index="">比赛管理</option>
+    <option value="0-1" data-section="全部/高级" data-index="">评价管理</option>
+    <option value="0-1" data-section="全部/高级" data-index="">账户管理</option>
+</select>
+    <script src="js/jquery.tree-multiselect.min.js"></script>
+   <script>
+        // JavaScript
+var params = {searchable: true,onChange:function(res){console.log(res)}};
+$("#demo1").treeMultiselect(params);
+    </script>
+</body>
+</html>

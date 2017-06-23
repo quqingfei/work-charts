@@ -1,0 +1,227 @@
+body{
+	font-family:"Microsoft YaHei","SimHei","STHei","Helvetica Neue", Helvetica, Arial, sans-serif;
+	line-height:100%;
+}
+
+.loadDiv{
+	width:100%;
+	height:100%;
+	overflow:hidden;
+}
+.loadImg{
+	width:30px;
+	height:30px;
+	display:block;
+	margin:180px auto;
+}
+.actionDiv{
+	padding:0% 3%;
+	width:94%;
+	height:auto;
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+.actionTitleDiv{
+	width:100%;
+	height:auto;
+	overflow:hidden;
+	padding:15px 0px 12px 0px;
+}
+.actionTitleMessage{
+	width:100%;
+	height:15px;
+	overflow:hidden;
+	border-left:1px solid #666666;
+}
+.actionTitle{
+	width:80%;
+	height:15px;
+	padding-left:10px;
+	line-height:15px;
+	font-size:15px;
+	color:#666666;
+}
+.null{
+	width:100%;
+	height:10px;
+	clear:borth;
+}
+.allNotesDiv{
+	width:100%;
+	height:auto;
+	overflow:hidden;
+}
+.notesDiv{
+	width:100%;
+	height:auto;
+	overflow:hidden;
+}
+.noteDiv{
+	width:100%;
+	height:auto;
+	padding-top:10px;
+}
+.noteTop{
+	position:relative;
+	width:100%;
+	height:40px;
+	/*padding-top:1em;*/
+	overflow:hidden;
+}
+.userIcon{
+	width:38px;
+	height:38px;
+	padding-top:0px;
+	float:left;
+	-moz-border-radius: 20px; /* Firefox */
+  	-webkit-border-radius: 20px; /* Safari 和 Chrome */
+  	border-radius: 20px; /* Opera 10.5+, 以及使用了IE-CSS3的IE浏览器 */
+  	border:1px solid #6E9FF6;/*FF7995*/
+}
+.userMessageDiv{
+	position:absolute;
+	width:auto;
+	height:32px;
+	top:0px;
+	left:40px;
+	right:70px;
+	padding:4px 5px;
+	float:left;
+	overflow:hidden;
+}
+.userName{
+	width:auto;
+	height:12px;
+	line-height:12px;
+	font-size:12px;
+	color:#343434;
+}
+.textWord{
+	width:auto;
+	height:15px;
+	line-height:15px;
+	font-size:12px;
+	padding-top:5px;
+	color:#888888;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+}
+.addFriendDiv{
+	position:absolute;
+	width:58px;
+	height:22px;
+	top:0px;
+	left:100%;
+	margin-left:-60px;
+	margin-top:8px;
+	float:right;
+	border:1px solid #FFD500;
+	/*pointer-events:none;*/
+	-webkit-user-select: none;/*禁用手机浏览器的用户选择功能 */
+	-moz-user-select: none;
+	user-select: none;
+}
+.addFriendImg{
+	width:12px;
+	height:12px;
+	padding-top:5px;
+	padding-left:8px;
+	float:left;
+}
+.friendText{
+	width:25px;
+	height:14px;
+	line-height:14px;
+	font-size:12px;
+	padding-top:4px;
+	padding-left:5px;
+	float:left;
+	color:#FFD500;
+}
+.noteImagesDiv{
+	width:100%;
+	height:100px;
+	padding-top:10px;
+}
+.noteImages{
+	width:auto;
+	height:100%;
+	overflow:hidden;
+}
+.noteImageDiv{
+	width:100%;
+	height:100%;
+	overflow:hidden;
+}
+.noteImage{
+	position:relative;
+	width:100%;
+	height:100%;
+	/*float:left;
+	display:none;
+	margin-right:2%;*/
+}
+.defaultImage{
+	width:100%;
+	height:100%;
+}
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.getNotesDiv{
+	width:100%;
+	height:2em;
+	line-height:2em;
+	font-size:1em;
+	color:#666666;
+	text-align:center;
+	padding:0.6em 0em;
+}
+.swiper-container{
+	height:100px;
+}
+/*@media screen and (max-height:500px){
+.noteImagesDiv{
+	width:100%;
+	height:6em;
+	padding-top:0.6em;
+}
+.swiper-container{
+	height:6em;
+}
+.noteImages{
+	width:auto;
+	height:6em;
+	overflow:hidden;
+}
+.noteImageDiv{
+	width:100%;
+	height:100%;
+	overflow:hidden;
+}
+.noteImage{
+	position:relative;
+	width:100%;
+	height:100%;
+}
+.defaultImage{
+	width:100%;
+	height:100%;
+}
+}*/

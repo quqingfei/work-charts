@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+
+<body onload="apptest()">
+    <!-- <a href="javascript:;" onclick="apptest()">下载测试</a> -->
+    <!-- <a href="javascript:;" onclick="apptest2()">下载测试1</a> -->
+    <script language="javascript">
+    function apptest() {
+        if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
+            // var loadDateTime = new Date();
+            // window.setTimeout(function() {
+            //         var timeOutDateTime = new Date();
+            //         if (timeOutDateTime - loadDateTime < 5000) {
+            //             window.location = "http://www.zhaiker.cn/";
+            //         } else {
+            //             window.close();
+            //         }
+            //     },
+            //     25);
+            // window.location = "zhaikerFatburning://";
+            var the_href = 'http://www.zhaiker.cn'; //获得下载链接
+            window.location= "zhaikerFatburning://" ; //打开某手机上的某个app应用
+            setTimeout(function() {
+                window.location = the_href; //如果超时就跳转到app下载页
+            }, 1000);
+        } else if (navigator.userAgent.match(/android/i)) {
+            // var state = null;
+            // try {
+            //     state = window.open("com.fatburning.zhaiker", '_blank');
+            // } catch (e) {}
+            // if (state) {
+            //     window.close();
+            // } else {
+            //     window.location = "http://www.zhaiker.cn/";
+            // }
+            var the_href = 'http://www.zhaiker.cn'; //获得下载链接
+            window.location = "fatburning://fatburning.com/openwith"; //打开某手机上的某个app应用
+            setTimeout(function() {
+                window.location = the_href; //如果超时就跳转到app下载页
+            }, 1000);
+        }
+    }
+    
+    </script>
+</body>
+
+</html>

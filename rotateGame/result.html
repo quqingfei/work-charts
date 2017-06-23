@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0,maximum-scale=1.0">
+<title>约跑水果湖，ZK健身送豪礼</title>
+<div id='wx_pic' style='margin:0 auto;display:none;'>
+<img src='./images/sharelogo.png' />
+</div>
+<link href="style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript" src="js/jquery-1.10.2.js"></script>
+<script type="text/javascript" src="js/awardRotate.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); // 构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg); // 匹配目标参数
+        if (r != null)
+            return unescape(r[2]);
+        return null; // 返回参数值
+    }
+    var iemidt = getUrlParam('d');
+    var t="",s="";
+    if(iemidt == 3){
+        t = "二等奖";
+        s = "ZK体验周卡一张智能体重秤";
+    }else if(iemidt == 4){
+        t = "三等奖";
+        s = "ZK单次体验卡一张康比特运动饮料"; 
+    }
+    $('.jiang').text(t);
+    $('.miaos').text(s);
+    
+	$('.btn').click(function(){
+           $('.zhezhapoc').show();             
+    });
+    $('.zhezhapoc').click(function(){
+        $(this).hide();
+    });
+    $('.btnS').click(function(){
+        window.location.href = "rotatedish.html"
+    })
+});
+</script>
+</head>
+<body>
+<div class="fengxiang"><img src="images/bg.png" alt=""><a class="btn" href="javascript:;" style="color:white;">分享到朋友圈</a>
+<a class="btnS" href="javascript:;" style="color:white;">去抽奖</a>
+<div class="fenxiao">
+    <div class="jiang">-</div>
+    <div class="miaos">-</div>
+</div>
+</div>
+<div class="zhezhapoc"><img src="./images/fenxiang.png" alt=""></div>
+</body>
+</html>

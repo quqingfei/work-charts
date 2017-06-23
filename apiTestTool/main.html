@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>API调试工具</title>
+
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<script src="js/c.js" type="text/javascript"></script>
+<script src="js/json2.min.js" type="text/javascript"></script>
+<link href="css/s.css" type="text/css" rel="stylesheet"></link>
+<link rel="icon" href="css/favicon.ico">
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min.js"></script>
+<script src="js/uploadify/jquery.uploadify.min.js">
+</script>
+
+<script src="js/apis.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="js/uploadify/uploadify.css">
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<style type="text/css">
+#fm {
+	margin: 0;
+	padding: 10px 30px;
+}
+
+.ftitle {
+	font-size: 14px;
+	font-weight: bold;
+	padding: 5px 0;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #ccc;
+}
+
+.fitem {
+	margin-bottom: 5px;
+}
+
+.fitem label {
+	display: inline-block;
+	width: 80px;
+}
+
+.fitem input {
+	width: 160px;
+}
+
+.parasWrap {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.para {
+	margin-bottom: 5px;
+}
+
+input[type="text"],.select {
+	width: 100%;
+	height: 34px;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #555;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+	-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow
+		ease-in-out .15s;
+	-o-transition: border-color ease-in-out .15s, box-shadow ease-in-out
+		.15s;
+	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+    .uploadify-button {
+        background-color: transparent;
+        border: none;
+        padding: 0;
+    }
+    .uploadify:hover .uploadify-button {
+        background-color: transparent;
+    }
+</style>
+</head>
+<body>
+	<!-- <h1>你好，世界！</h1> -->
+
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="js/bootstrap.min.js"></script>
+
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button class="navbar-toggle collapsed" type="button"
+					data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand hidden-sm">API调试工具</a>
+			</div>
+			<div class="navbar-collapse collapse" role="navigation">
+				<ul class="nav navbar-nav">
+					<li class="dropdown"><a href="javascript:void(0)"
+						class="dropdown-toggle" data-toggle="dropdown">App接口<b
+							class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="javascript:void(0)" onclick="showAPI(0)">登录注册</a></li>
+							<li><a href="javascript:void(0)" onclick="showAPI(1)">用户信息</a></li>
+							<li><a href="javascript:void(0)" onclick="showAPI(2)">社区信息</a></li>
+							<li><a href="javascript:void(0)" onclick="showAPI(3)">好友接口</a></li>
+							<li><a href="javascript:void(0)" onclick="showAPI(3)">健康资讯</a></li>
+							<li><a href="javascript:void(0)" onclick="showAPI(4)">APP日志</a></li>
+							<li><a href="javascript:void(0)" onclick="showAPI(5)">用户反馈</a></li>
+							<li><a href="javascript:void(0)" onclick="showAPI(6)">APP版本</a></li>
+						</ul></li>
+					<li class="dropdown"><a href="javascript:void(0)"
+						class="dropdown-toggle" data-toggle="dropdown">后台接口<b
+							class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="javascript:void(0)">loginAction</a></li>
+							<li><a href="javascript:void(0)">userAction</a></li>
+							<li><a href="javascript:void(0)">noteAction</a></li>
+							<li><a href="javascript:void(0)">articleAction</a></li>
+							<li><a href="javascript:void(0)">productAction</a></li>
+							<li><a href="javascript:void(0)">orderAction</a></li>
+							<li><a href="javascript:void(0)">accountAction</a></li>
+							<li><a href="javascript:void(0)">versionAction</a></li>
+							<li><a href="javascript:void(0)">AppLogAction</a></li>
+						</ul></li>
+					<li class="dropdown"><a href="javascript:void(0)"
+						class="dropdown-toggle" data-toggle="dropdown">web接口<b
+							class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="javascript:void(0)">loginAction</a></li>
+							<li><a href="javascript:void(0)">userAction</a></li>
+							<li><a href="javascript:void(0)">noteAction</a></li>
+							<li><a href="javascript:void(0)">articleAction</a></li>
+							<li><a href="javascript:void(0)">productAction</a></li>
+							<li><a href="javascript:void(0)">orderAction</a></li>
+							<li><a href="javascript:void(0)">accountAction</a></li>
+							<li><a href="javascript:void(0)">versionAction</a></li>
+							<li><a href="javascript:void(0)">AppLogAction</a></li>
+						</ul></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="main.html" target="_blank">打开新窗口</a></li>
+					<li><a href="index.html">退出系统</a></li>
+					<li><a href="javascript:void(0)" id="uid"></a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+<style>
+
+table {
+  color: #333;
+  font-family: sans-serif;
+  font-size: .9em;
+  font-weight: 300;
+  text-align: left;
+  line-height: 40px;
+  border-spacing: 0;
+  border: 1px solid #428bca;
+  width: 500px;
+  margin: 20px auto;
+}
+
+thead tr:first-child {
+  background: #428bca;
+  color: #fff;
+  border: none;
+}
+
+th {font-weight: bold;}
+th:first-child, td:first-child {padding: 0 15px 0 20px;}
+
+thead tr:last-child th {border-bottom: 2px solid #ddd;}
+
+tbody tr:hover {background-color: #f0fbff;}
+tbody tr:last-child td {border: none;}
+tbody td {border-bottom: 1px solid #ddd;}
+
+td:last-child {
+  /* text-align: right; */
+  padding-right: 10px;
+}
+
+</style>
+	<div style="margin-top: 75px;padding:10px 30px;">
+		<table class="table" id="apis" style="display:none;">
+			<thead>
+				<tr>
+					<th>名称</th>
+					<th>说明</th>
+					<th>请求参数</th>
+				</tr>
+			</thead>
+		</table>
+	</div>
+
+	<div style="margin-top: 10px;" id="formWrap">
+	<form id="fm" method="post">
+		<div class="fitem">
+			<label for="rqsMethod">请求方法:</label> <select class="select" style="width: 100px;"
+				id="method">
+				<option value="POST">POST</option>
+				<option value="GET">GET</option>
+			</select>
+		</div>
+		<div class="fitem">
+			<label for="url">请求URL:</label> <input type="text"
+				style="width: 230px;" placeholder="URL" name="url" id="url" />
+		</div>
+		<div class="fitem">
+			<label>请求参数:</label>
+			<div class="parasWrap" id="paras">
+				<div class="para">
+					<input type="text" name="paraName" placeholder="名称"
+						style="width: 230px;" /> <input type="text" name="paraVal"
+						placeholder="值" style="width: 230px;" /> <a
+						href="javascript:void(0)" title="添加" onclick="addParas()">+</a> <a
+						href="javascript:void(0)" title="删除" onclick="delParas(this)">-</a>
+				</div>
+
+			</div>
+		</div>
+<!-- 		<div class="fitem">
+			<label for="productPrice">上传文件</label> 
+			<input type="file" id="uploader">
+		</div> -->
+		<div class="fitem">
+			<table class="table" id="files" style="display:none;">
+				<thead>
+			        <tr>
+			          <th>原文件名</th>
+			          <th>新文件名</th>
+			        </tr>
+			      </thead>
+			</table>
+		</div>
+		<div class="fitem">
+			<button type="button" id="btnSubmit" onclick="newRequest()" class="btn btn-default">提交</button>
+		</div>
+		<div class="fitem">
+			<div id="state"></div>
+		</div>
+	</form>
+	</div>
+	
+	<div class="bs-example2">
+		<div class="" style="display: none;">
+			<textarea id="RawJson" style="display: none;">   {"bmi":19.861591,"calorie":0,"gmtCreate":"2014-10-31 19:23:53","gmtModify":"2014-10-31 19:23:53","id":1,"isDeleted":"n","recordId":141028064258,"steps":10,"uploadTime":141028064258,"usedTime":4,"userId":"13962396239","weight":57.4} </textarea>
+			<!-- <input type="Button" value="格式化" onclick="Process()" />  --><span
+				id="TabSizeHolder"> 缩进量 <select id="TabSize"
+				onchange="TabSizeChanged()">
+					<option value="1">1</option>
+					<option value="2" selected="true">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+			</select>
+			</span> <label for="QuoteKeys"> <input type="checkbox"
+				id="QuoteKeys" onclick="QuoteKeysClicked()" checked="true" /> 引号
+			</label>&nbsp; <a href="javascript:void(0);" onclick="SelectAllClicked()">全选</a>
+			&nbsp; <span id="CollapsibleViewHolder"> <label
+				for="CollapsibleView"> <input type="checkbox"
+					id="CollapsibleView" onclick="CollapsibleViewClicked()"
+					checked="true" /> 显示控制
+			</label>
+			</span> <span id="CollapsibleViewDetail"> <a
+				href="javascript:void(0);" onclick="ExpandAllClicked()">展开</a> <a
+				href="javascript:void(0);" onclick="CollapseAllClicked()">叠起</a> <a
+				href="javascript:void(0);" onclick="CollapseLevel(3)">2级</a> <a
+				href="javascript:void(0);" onclick="CollapseLevel(4)">3级</a> <a
+				href="javascript:void(0);" onclick="CollapseLevel(5)">4级</a> <a
+				href="javascript:void(0);" onclick="CollapseLevel(6)">5级</a> <a
+				href="javascript:void(0);" onclick="CollapseLevel(7)">6级</a> <a
+				href="javascript:void(0);" onclick="CollapseLevel(8)">7级</a> <a
+				href="javascript:void(0);" onclick="CollapseLevel(9)">8级</a>
+			</span>
+		</div>
+		<div id="Canvas" class="Canvas" style="display:none;"></div>
+	</div>
+
+
+	
+	<script>
+	String.prototype.replaceAll = function(s1, s2) {
+	    return this.replace(new RegExp(s1, "gm"), s2)
+	}
+	function newRequest(){
+		$("#Canvas").hide();
+		var data = [];
+		var $paras = $("#paras");
+		$paras.children('div').each(function(){
+			var paraName = $(this).find(":input[name='paraName']").val();
+			var paraVal = $(this).find(":input[name='paraVal']").val();
+			paraVal = paraVal.replaceAll('"','\\"');
+			var para = '"'+paraName + '"' +':' + '"' + paraVal + '"';
+			//console.log(para);
+			data.push(para);
+		});
+		//console.log(data.join(','));
+		//var url = '../noteAction!list22.zk?pageIndex=1&pageSize=6';
+		var $url = $("#url");
+		var $method = $("#method");
+		var url = $.trim($url.val());
+		if(url=='' || url.lastIndexOf('.zk') < 1){
+			$url.focus();
+			return ;
+		}
+		var method = $method.val();
+		//alert('url:'+url+',method:'+method+',data:');
+		var dataStr = '{'+data.join(',')+'}';
+		//dataStr = dataStr.replaceAll("\"", '\\"');
+		//console.log(dataStr);
+		console.log(JSON.parse(dataStr));
+		var $state = $("#state");
+		$.ajax({
+			url  : '../' +	url, 
+			type : method ,
+			data : JSON.parse(dataStr) ,
+			success: function(data){
+				//console.log('response data:'+data);
+				$("#Canvas").show();
+				$('#RawJson').val(data);
+				Process();
+	      	},
+	      	beforeSend: function (){
+	      		$("#btnSubmit").attr('disabled',true);
+	      		$state.html('<img src=\"css/loading.gif\" >正在处理中...');
+	      	},
+	      	error: function (){
+	      		$state.html('<span class="label label-warning">连接超时，无法处理请求</span>');
+	      	},
+	      	complete: function (){
+	      		$("#btnSubmit").attr('disabled',false);
+	      		$state.html('<span class="label label-success">已经完成请求，响应结果如下:</span>');
+	      	}
+		});
+	}
+	
+	function addParas(){
+		var paras = "<div class=\"para\"><input type=\"text\" name=\"paraName\" placeholder=\"名称\" style=\"width:230px;\" /> "+
+		"<input type=\"text\" name=\"paraVal\" placeholder=\"值\" style=\"width:230px;\" /> "+
+		"<a href=\"javascript:void(0)\" title=\"添加\" onclick=\"addParas()\">+</a> "+
+		"<a href=\"javascript:void(0)\" title=\"删除\" onclick=\"delParas(this)\">-</a> </div> ";
+		$(paras).appendTo("#paras");
+	}
+	function delParas(e){
+		var $para = $(e).parent();
+		$parent = $para.parent();
+		var len = $parent.children('div').length;
+		if(len > 1){
+			$para.remove();
+		}
+	}
+	
+	$(function(){
+/*  		$('#uploader').uploadify({
+			'buttonText' : '选择文件',
+			'buttonImage' : 'js/uploadify/browse-btn.png',
+			'swf'      : 'js/uploadify/uploadify.swf',
+			'uploader' : '../file/FileCenter!upload.zk' ,
+			'onUploadSuccess' : function(file, data, response) {
+				data = $.parseJSON(data);
+				var uploadFile = {
+					"name": data.Filedata,
+					"original": file.name,
+					"type": file.type.toLowerCase()
+				};
+				var tr = "<tr><td>"+file.name+"</td><td>"+data.Filedata+"</td></tr>";
+				$("#files").show();
+				$("#files").append(tr);
+		    } 
+		}); */
+	});
+	
+	function parseParaHTML(paras){
+		var result = [];
+		var paranames = [];
+		var lis = [];
+		var ul = '';
+		if(paras.length > 0){
+			for(var i = 0 ;i<paras.length;i++){
+				var li = "<li><code>"+paras[i].field+"</code> "+paras[i].desc+"</li>";
+				paranames.push(paras[i].field);
+				lis.push(li);
+			}
+			ul = "<ul>"+lis.join('')+"</ul>";
+		}
+		result.push(paranames);
+		result.push(ul);
+		return result;
+	}
+	//显示API
+	function showAPI(api){
+		var $apis = $('#apis');
+		//var url = zkAPI.getURL(api);
+		var apis = zkAPI.get(api);
+		//var apis = [{"name":"logout","desc":"用户注销"},{"name":"login2","desc":"用户登录,使用数据加密"},{"name":"time","desc":"同步服务器时间"}];
+		
+		var trs = [];
+		for(var i = 0 ;i<apis.length;i++){
+			var parseResult = parseParaHTML(apis[i].paras);
+			var paras = parseResult[0];
+			var ul = parseResult[1];
+			var tr = "<tr><td><a href=\"javascript:void(0)\" onclick=\"fillForm('"+apis[i].url+"','"+paras.join(',')+"')\">"+apis[i].name+"</a></td><td>"+apis[i].desc+"</td><td>"+ul+"</td></tr>";
+			trs.push(tr);
+		}
+		$apis.find('tr').not(':first').empty();
+		$apis.append(trs.join(''));
+		$apis.show();
+		$('html,body').animate({scrollTop:$apis.offset().top-105},500);
+	}
+	
+	function fillForm(url,data){
+		$('#url').val(url);
+		// data = name,age,sex
+		// data =[{"field":"name","desc":"姓名"}，{"field":"age","desc":"年龄"}]
+		//var paras = [{"field":"name","desc":"姓名"},{"field":"age","desc":"年龄"}];
+		var paras = data.split(',');
+		if(paras.length > 0 ){
+			$('#paras').empty();
+			for(var i = 0 ;i<paras.length;i++){
+				var parasHTML = "<div class=\"para\"><input type=\"text\" name=\"paraName\" placeholder=\"名称\" style=\"width:230px;\" value=\""+paras[i]+"\"/> "+
+				"<input type=\"text\" name=\"paraVal\" placeholder=\"值\" style=\"width:230px;\" /> "+
+				"<a href=\"javascript:void(0)\" title=\"添加\" onclick=\"addParas()\">+</a> "+
+				"<a href=\"javascript:void(0)\" title=\"删除\" onclick=\"delParas(this)\">-</a> </div> ";
+				$(parasHTML).appendTo("#paras");
+			}
+		}
+		$('html,body').animate({scrollTop:$(document).height()},500);
+	}
+	
+	$(function(){
+/* 		$.post('../userAction!userData.zk',{},function(data){
+			var userId = data.user.userId;
+			$('#uid').text(userId);
+		},'json'); */
+	});
+	</script>
+</body>
+</html>

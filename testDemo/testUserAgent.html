@@ -1,0 +1,49 @@
+<html>
+
+<head>
+    <title>Javascript模糊查找</title>
+</head>
+
+<body>
+    <li id="name">Name</li>
+    <li  id="sex">sex</li>
+    <li id="age">age</li>
+    <li id="job">job</li>
+    <li id="mail">E-mail</li>
+    <input id="input" type="text" value="" />
+    <input id="search" type="button" onclick="findEach()" value="Search" />
+    <ul id="sole">
+        
+    </ul>
+    <script>
+        var vData = ["name", "sex", "age", "job", "E-mail"];
+
+        var sole = document.getElementById("sole");
+        function findEach() {
+            var sFind = document.getElementById("input").value;
+            if (sFind == "") {
+                alert("Can not be empty");
+            }
+            if (sFind != "") {
+                var nPos;
+                var vResult = [];
+                for (var i in vData) {                    
+                    var sTxt = vData[i] || '';
+                    nPos = sTxt.indexOf(sFind);
+                    if (nPos >= 0) {
+                        vResult[vResult.length] = sTxt;
+                    }
+                }
+//                alert(vResult);
+                sole.innerHTML = "";
+                for(var i=0;i<vResult.length;i++){                    
+                    var newNode = document.createElement("li"); 
+                    newNode.innerHTML = vResult[i];
+                    sole.appendChild(newNode);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

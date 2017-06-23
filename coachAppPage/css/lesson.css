@@ -1,0 +1,138 @@
+@import url(normal.css);
+
+.swiper{
+	height:4.4rem;
+}
+
+.lesson-info {
+    position: relative;
+
+    margin-top: 4.4rem;
+    padding: .25rem;
+
+    border-bottom: .25rem solid #efefef;
+}
+
+.lesson-intro {
+    padding: .25rem 0;
+}
+.lesson-intro h3 {
+    margin-left: .25rem ;
+}
+
+#power {
+    display: inline-block;
+    height: 14px;
+    padding: 5px 0;
+    vertical-align: top;
+}
+[data-dpr='2'] #power {
+    height: 28px;
+    padding: 10px 0;
+}
+[data-dpr='3'] #power {
+    height: 42px;
+    padding: 15px 0;
+}
+#power img {
+    height: 100%;
+}
+
+#level {
+    line-height: .8rem;
+
+    position: absolute;
+    top: 50%;
+    right: .25rem;
+
+    width: 2.0rem;
+    margin-top: -.4rem;
+
+    text-align: center;
+
+    color: #fff;
+    border-radius: .1rem;
+    background-color: #3fc371;
+}
+
+#introPic {
+    margin-top: .125rem;
+    width: 100%;
+    padding-top: .25rem;
+    border-top: 1px solid #ccc;
+}
+span {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 22px;
+    color: #999;
+}
+.coache{
+    font-size: 16px;
+    line-height: 34px;
+}
+.coache span{
+    font-size: 16px;
+    line-height: 34px;
+}
+[data-dpr='2'] .coache {
+    font-size: 32px;
+    line-height: 68px;
+}
+
+[data-dpr='3'] .coache {
+    font-size: 48px;
+    line-height: 102px;
+}
+[data-dpr='2'] .coache span{
+    font-size: 32px;
+    line-height: 68px;
+}
+
+[data-dpr='3'] .coache span{
+    font-size: 48px;
+    line-height: 102px;
+}
+[data-dpr='2'] span {
+    font-size: 28px;
+    line-height: 50px;
+}
+
+[data-dpr='3'] span {
+    font-size: 42px;
+    line-height: 70px;
+}
+
+.media320{
+    display: none;
+}
+.lde{
+    margin-left: 1.2rem;
+}
+.side{
+    display: inline-block;
+    border: 1px solid #49badc;border-radius: 4px;
+    color: #49badc;
+    padding: 0 12px;
+    margin-left: 0.2rem;
+}
+.odled{
+    line-height: 60px;
+    background: #49badc;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 28px;
+    color: white;
+}
+[data-dpr='2'] .odled {
+    font-size: 28px;
+    line-height: 80px;
+}
+
+[data-dpr='3'] .odled {
+    font-size: 58px;
+    line-height: 160px;
+}

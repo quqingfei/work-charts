@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta name="MobileOptimized" content="320"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>运动报告</title>
+</head>
+<style>
+    body,html{padding: 0;margin: 0;width: 100%;font-family: "微软雅黑";height: auto}
+    body{background: #fff};
+    .headers{overflow: hidden;background:white; }
+    .header_title{ padding: 1.4rem 4%;line-height: 1.6rem;height: 1.6rem;background: white;}
+    .header_title_r{float: left;color:#333;font-size: 1.5rem;}
+    .header_title_l{float: right;color: #333;background:#fff;padding: 0.2rem 0.4rem;font-size: 0.8rem;border-radius: 20px;height: 1.2rem;
+    line-height: 1.2rem;}
+    .body_ldi{overflow: hidden;padding: 1.5rem auto 0 auto;background: white;}
+    .body_l{float: left;width: 50%;position: relative;}
+    .body_r{float: right;width: 50%;}
+    .body_r_t{color: #333;font-size: 3rem;width: 100%; margin-bottom: 2rem;height: 3.2rem;line-height: 3.6rem;}
+    .body_r_d{width: 100%;color: #333;font-size: 1rem;margin-top: 1.4rem;height: 1rem;line-height: 1rem;}
+    .green{display:inline-block;width: 0.65rem;height: 0.65rem;border-radius: 50%;margin-right: 0.4rem;}
+    .g1{background: #49badc;}
+    .g2{background: #ffbd24;}
+    .g3{background: #ff4415;}
+    .headicon{width: 12rem;height: 12rem;margin: 0 auto;position: relative;}
+    .headicon img{width: 6rem;
+    height: 6rem;
+    box-sizing: border-box;
+/*    border: 2px solid #0394f3;*/
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -3rem;
+    margin-top: -3rem;}
+    .time{width: 100%;overflow: hidden;background: white;padding-bottom: 20px;border-bottom: 10px solid #efefef;}
+    .idmed{text-align: center;color:#999;width: 50%; }
+    .line{background: url(./img/line.png) no-repeat center;background-size: contain;height: 1px;margin: 2rem 0;}
+    .bodytit{width:92%;margin: 1rem auto;color: #333;font-size: 1.5rem;}
+    .three{width: 92%;margin:0 auto;padding-bottom: 2rem; overflow: hidden;}
+    .diodoe{background: white;}
+    .therrd{float: left;width: 32%;background-color: #fff;padding: 1rem 0 0.8rem 0;}
+    .middle{margin: 0 2%;}
+    .aed{width: 100%;font-size:1rem;text-align: center;}
+    .ges font.lg{color: #3fc371;}
+    .ges font.ly{color: #f4b33b;}
+    .ges font.lr{color: #e03319;}
+    .ges{width: 100%;text-align: center;}
+    .ges span{font-size:2.4rem;color: #333;}
+    .ges font{font-size:0.6rem;color: #999;}
+     body{
+
+        -moz-user-select: none; /*火狐*/
+
+        -webkit-user-select: none; /*webkit浏览器*/
+
+        -ms-user-select: none; /*IE10*/
+
+        -khtml-user-select: none; /*早期浏览器*/
+
+        user-select: none;
+
+        }
+    .borderdouble{
+        position: relative;
+    }
+    .borderdouble:before{
+        position: absolute;
+        content: '';
+        border-left: 1px solid #ccc;
+        top: 1.9rem;
+        left: -1px;
+        height: 2rem;
+        width: 1px;
+    }
+    .borderdouble:after{
+        position: absolute;
+        content: '';
+        border-left: 1px solid #ccc;
+        top: 1.9rem;
+        right: -1px;
+        height: 2rem;
+        width: 1px;
+    }
+</style>
+<body id="app">
+<div class="headers">
+    <div class="header_title">
+        <div class="header_title_r">运动消耗</div>
+        <div class="header_title_l" id="time">2017-03-15</div>
+    </div>
+    <div class="body_ldi">
+        <div class="body_l">
+            <div class="headicon">
+            <div id="pieChart" style="width:100%;height:100%;"></div>
+            <img id="userhead" src="img/defaulthead.png" alt=""></div>
+        </div>
+        <div class="body_r">
+            <div class="body_r_t"><span id="allkcal">-</span> Kcal</div>
+            <div class="body_r_d"><i class="green g1"></i><span>有氧燃脂(<span id="oxygen">-</span>kcal)   <font id="oxygenPsent">-</font>%</span></div>
+            <div class="body_r_d"><i class="green g2"></i><span>耐力提升(<span id="stamlna">-</span>kcal)   <font id="stamlnaPsent">-</font>%</span></div>
+            <div class="body_r_d" style="margin-bottom: 1rem;"><i class="green g3"></i><span>高强无氧(<span id="anaerobicl">-</span>kcal)   <font id="anaerobiclPsent">-</font>%</span></div>
+        </div>
+    </div>
+    <div class="time"><div class="idmed">运动时长   <span id="oprt">-</span>(Mins)</div></div>
+<!--    <div class="line"></div>-->
+</div>
+<div class="bodytit">心率监测</div>
+<div class="diodoe">
+    <div class="three">
+        <div class="therrd">
+<!--            <div class="aed lg">最小心率</div>-->
+            <div class="ges"><span id="minHeart">-</span><font class="lg">MIN</font></div>
+        </div>
+        <div class="therrd middle borderdouble">
+<!--            <div class="aed ly">平均心率</div>-->
+            <div class="ges"><span id="avgHeart">-</span><font class="ly">AVE</font></div>
+        </div>
+        <div class="therrd">
+<!--            <div class="aed lr">最大心率</div>-->
+            <div class="ges"><span id="maxHeart">-</span><font class="lr">MAX</font></div>
+        </div>
+    </div>
+</div>
+
+<div id="weightChart" style="width: 100%;height:266px;z-index:0"></div>
+</body>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/echarts.common.min.js"></script>
+<script src="js/vue.min.js"></script>
+<script>
+    var sw = $(window).width();
+        if(sw>640){
+            sw = 640;
+        }
+    $("html").css("font-size",sw/1080*32.8125+"px");
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); // 构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg); // 匹配目标参数
+        if (r != null)
+            return unescape(r[2]);
+        return null; // 返回参数值
+    }
+    var id =  getUrlParam('id');
+    function timesport(time){
+        var h = 0;
+        var s = Math.round(time/1000);
+        if(s>59){
+            h = Math.floor(s/60);
+            h = h>9?h:"0"+h;
+            s = s%60;
+            s = s>9?s:"0"+s;
+        }else{
+            s = s>9?s:"0"+s;
+            h = "00";
+        }
+        return h+":"+s;
+    }
+    function qutwowei(data){
+        var d = parseInt(data*10);
+        return d/10;
+    }
+   var pChart = echarts.init(document.getElementById('pieChart'));
+   var wChart = echarts.init(document.getElementById('weightChart'));
+    $.ajax({
+        type:'post',
+        data:{id:id},
+        url:'../fatburn/sportreport/SportReportAction!getById.zk',
+        dataType:'json',
+        success:function(res){
+            if(res.STATUS){
+                var storp = res.sportReport;
+                var dos = Number(storp.oxygen+storp.stamlna+storp.anaerobicl);
+                var da = new Date(storp.gmtCreate);
+                var year = da.getFullYear();
+                var month = da.getMonth()+1;
+                var day = da.getDate()+1;
+                $('#time').text(year+"-"+month+"-"+day);
+                $('#allkcal').text(qutwowei(dos));
+                $('#oxygen').text(qutwowei(storp.oxygen));
+                $('#stamlna').text(qutwowei(storp.stamlna));
+                $('#userhead').attr('src','../file/FileCenter!showImage2.zk?name='+storp.userHead);
+                $('#anaerobicl').text(storp.anaerobicl);
+                $('#oxygenPsent').text(((storp.oxygen/dos)*100).toFixed(1));
+                $('#stamlnaPsent').text(((storp.stamlna/dos)*100).toFixed(1));
+                $('#anaerobiclPsent').text(((storp.anaerobicl/dos)*100).toFixed(1));
+                $('#oprt').text(timesport(storp.sportTime));
+                $('#minHeart').text(storp.minHeart);
+                $('#avgHeart').text(storp.avgHeart);
+                $('#maxHeart').text(storp.maxHeart);
+                pChart.setOption(Pie(storp.oxygen,storp.stamlna,storp.anaerobicl));
+                var listdata = JSON.parse(storp.heartList);
+                var time = [],data = [];
+                listdata.map(function(x){
+                    time.push(x.x+"s");
+                    data.push(x.y);
+                })
+                wChart.setOption(Line(time,data));
+            }else{
+                alert(res.INFO)
+            }
+        }
+    })
+    function Line(time,data){
+       return  {
+        calculable:false,
+        backgroundColor: '#fff',
+        title: {
+            text: '',
+            left: 'center',
+            textStyle: {
+                fontSize: '14'
+            }
+        },
+        tooltip: {
+//            formatter: function(params) {
+//                return $('#monthSel').val() + '月' + 'params[0].name' + '日<br/>' + 'params[0].seriesName' + ' : ' + 'params[0].value';
+//            },
+            trigger: 'axis',
+            axisPointer: {
+                type: 'none'
+            }
+        },
+        grid: {
+            left: '1%',
+            right: '4%',
+            bottom: '3%',
+            top: '2%',
+            containLabel: true
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            splitLine: {
+                show: true,
+                lineStyle:{
+                    color: '#fff'
+                }
+            },
+            data: time,
+            axisLabel: {
+                show: true,
+                textStyle: {
+                    color: '#333'
+                }
+            }
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: false,
+            splitLine: {
+                show: true,
+                lineStyle:{
+                    color: '#fff'
+                }
+            },
+             axisLabel: {
+                            show: true,
+                            textStyle: {
+                                color: '#999'
+                            }
+                        }
+        },
+        axis:{
+            axisLine:{
+                lineStyle:{
+                    color: '#48b',
+                    type: 'solid'
+                }       
+            },
+        },
+        series: [{
+            name: '心率',
+            type: 'line',
+            smooth: true,
+            symbol:'none',
+            symbolSize:'4',
+            stack: '总数',
+            data: data,
+            areaStyle: {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: 'rgba(220, 220, 220,1)'
+                    },{
+                        offset: 0.6,
+                        color: 'rgba(255, 255, 255,1)'
+                    }]),
+                }
+            },
+            itemStyle:{
+                normal:{
+                    color:new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: 'rgb(224, 51, 25)'
+                    }, {
+                        offset: 0.4,
+                        color: 'rgb(254, 189, 60)'
+                    },{
+                        offset: 0.6,
+                        color: 'rgb(47, 231, 119)'
+                    }]),
+                    lineStyle:{
+                        width:4
+                    }
+                }
+            },
+        }],
+//        color:['#3fc370']
+//        color:[new echarts.graphic.LinearGradient(0, 0, 0, 0.6, [{offset: 0, color: 'rgb(71, 194, 116)'}])]
+    }
+    }
+
+    
+    
+ 
+    function Pie(oxygen,stamlna,anaerobicl){
+        return {
+            tooltip: {
+                trigger: 'item',
+                formatter: "{a} <br/>{b}: {c} ({d}%)"
+            },
+            // legend: {
+            // 	orient: 'vertical',
+            // 	left: 'right',
+            // 	data: ['已办卡', '未办卡']
+            // },
+
+            series: [{
+                name: '运动消耗',
+                type: 'pie',
+                radius: ['70%', '90%'],
+                // center: ['35%', '50%'],
+                avoidLabelOverlap: false,
+
+                label: {
+                    normal: {
+                        show: false,
+                        position: 'center'
+                    },
+                    emphasis: {
+                        show: true,
+                        formatter: "{d}%",
+                        textStyle: {
+                            fontWeight: 'bold'
+                        }
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        show: false
+                    }
+                },
+                data: [{
+                    value: oxygen,
+                    name: '有氧'
+                }, {
+                    value: stamlna,
+                    name: '耐力'
+                }, {
+                    value: anaerobicl,
+                    name: '无氧'
+                }],
+                color:['#49badc','#ffbd24','#ff4415']
+            }]
+        };
+    }
+    
+</script>
+</html>

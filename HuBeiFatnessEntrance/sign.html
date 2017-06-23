@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>湖北省健身健美运动协会</title>
+</head>
+<body>
+   <script src="http://cdn.bootcss.com/jquery/1.8.3/jquery.js"></script>
+   
+</body>
+ <script>
+        function getSignData() {
+            if (!window.WebViewJavascriptBridge) {
+                return false;
+            }
+            window.WebViewJavascriptBridge.callHandler('getSign', {},
+                function(responseData) {
+                    deviceData = responseData;
+                });
+                return deviceData;
+        }
+        function connectWebViewJavascriptBridge(callback) {
+            if (window.WebViewJavascriptBridge) {
+                callback(WebViewJavascriptBridge);
+            } else {
+                document.addEventListener('WebViewJavascriptBridgeReady', function() {
+                    callback(WebViewJavascriptBridge);
+                }, false);
+            }
+        }
+        connectWebViewJavascriptBridge(function(bridge) {
+            // 初始化
+            bridge.init(function(message, responseCallback) {
+                var data = {
+                    'Javascript Responds': 'backApp'
+                };
+                responseCallback(data);
+            });
+            // oc调用js方法
+            bridge.registerHandler('zkBackEvent',function(data, responseCallback) {
+                var responseData = '';
+                responseCallback(responseData);
+            }); 
+            bridge.registerHandler('readyBack',function(data, responseCallback) {
+                readyBack();
+                var responseData = {
+                    'Javascript Says': 'readBack!'
+                };
+                responseCallback(responseData);
+            });    
+
+        });
+    var s=setInterval(function(){
+            if(getSignData()){
+                $.ajax({
+                    type:'post',
+                    url: '../fatburn/ScoreAction!checkSign.zk',
+                    data:{sign:getSignData()},
+                    dataType:'json',
+                    success: function(res){
+                        if(res.STATUS)
+                        window.location.href = "http://"+window.location.host+"/fatburn/entrance/index.html#!/index";
+                    }
+                })
+                clearInterval();
+            }
+             
+    },100)
+        
+       
+    </script></html>

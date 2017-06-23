@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+    body,html{font-family: '微软雅黑'}
+.zk{width:560px;overflow: hidden;padding: 10px 20px;  position: relative;
+  z-index: 1;}
+    .zktitle{width: 100%;height: 34px; border-top: 4px solid #dddddd;border-bottom: 2px solid #dddddd;}
+    .zktitlebox{width: 100%;overflow: hidden;}
+    .zktitleword{font-size: 14px;float: left;line-height: 14px;height: 14px; margin-left: 8px;border-left: 2px solid #3fc370;margin-top: 10px;padding-left: 8px;color: #656565;font-weight: bold;}
+    .zktitleright{font-size: 14px;float: right;line-height: 14px;height: 14px; margin-left: 8px;margin-top: 10px;padding-left: 8px;color: #656565;font-weight: bold;}
+    .zktitlebler{float: right;overflow: hidden;margin-top: 8px;background: white;margin-right: 20px;}
+    .zktitlebler-b{float: right;overflow: hidden;margin-top: 8px;background: white;  margin-right: 15px;}
+    .bler{float: left;text-align: center;background: #eee;}
+    a{text-decoration: none;}
+    .bler a{display: block;font-size: 12px;height: 25px;line-height: 25px;padding: 0 10px;color: #656565}
+    .zktitlebler .ser{border-left: 2px solid #ddd;border-right: 2px solid #ddd;border-top: 3px solid #3fc370;background: white;}
+    .zktitlebler-b .ser{border-left: 2px solid #ddd;border-right: 2px solid #ddd;border-top: 3px solid #3fc370;background: white;}
+    .ser-color{border-right: 2px solid #eee;border-top: 1px solid #eee;border-bottom: 2px solid #ddd;}
+    .titcolor{color:#3fc370;font-weight: normal;font-size: 13px;}
+    .titcolorred{color:#eb1d1d;font-weight: normal;font-size: 13px;}
+    .cons{width: 25%;overflow: hidden;float: left;margin-bottom: 8px;}
+    .consl{float: left;text-align: right;width: 52%;font-size: 12px;}
+    .consr{float: right;text-align: left;width: 48%;font-size: 12px;box-sizing: border-box;color: #666;}
+    .const{float: left;width: 12%;font-size: 12px;}
+    .constr{float: right;width: 88%;font-size: 12px;color: #666;}
+    .consb-l{float: left;width: 60%;}
+    .consb-r{float: right;width: 38%;margin-left: 2%;}
+    .pexp{float: right;width: 40%;text-align: center;font-size: 12px;font-weight: bold;color:#3fc370;}
+    .pexp-h{line-height: 30px}
+    .pexp-bic{overflow: hidden;height: 24px;width: 70%;background: #eee;margin: 0 auto;border-radius: 24px;margin: 17px auto;}
+    .pexp-l{width: 24px;height: 24px;border-top-left-radius: 12px;border-bottom-left-radius: 12px;border-top-right-radius: 12px;float: left;}
+    .pexp1{background: #3fc370;}
+    .pexp2{background: #feba3b;}
+    .pexp3{background: #f25657;}
+    .pexp-r{float: left;line-height: 24px;text-align: center;width: 70px;color:#666;font-weight: normal;}
+    .mtitl{clear: both;font-size: 12px;overflow: hidden;}
+    .mtitl span{color: #666;}
+    .mtitl-l{float: left;width: 30%;}
+    .mtitl-r{float: left;width: 70%;text-align: right;}
+    .latit{width: 100%;background: #dddddd;font-size: 12px;font-weight: bold;padding-left: 8px;box-sizing: border-box;color: #676767;line-height: 28px;margin-top:10px;}
+    .objs tr:nth-child(2n){background: #eee;}
+    .objs{text-align:center;color: #676767;font-size: 12px;}
+    .green{color: #3fc370;}
+    .hpotp{width: 90%;border:1px solid #ddd;margin: 5%;box-sizing: border-box;  height: 328px;}
+</style>
+<body>
+    <div class="zk">
+        <div class="zktitle">
+            <div class="zktitlebox">
+                <div class="zktitleword">近7次体测数据</div>
+                <div class="zktitlebler">
+                    <div class="bler ser" attr='w'><a class="" href="javascript:;">体重</a></div>
+                    <div class="bler ser-color" attr='b'><a class="" href="javascript:;">体脂率</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="weightChart" style="width: 600px;height:266px;padding-left:12px;margin-top:-30px;overflow:hidden;z-index:0"></div>
+    <div class="zk">        
+        <div class="zktitle">
+            <div class="zktitleword">体测数据: <span class="titcolor">2016-06-23</span></div>
+            <div class="zktitleright">综合评分: <span class="titcolorred">90.3</span></div>
+        </div>
+    </div>
+    <div class="zk">
+        <div class="cons">
+            <div class="consl">体重(KG)：</div>
+            <div class="consr">80</div>
+        </div>
+        <div class="cons">
+            <div class="consl">内脂指数：</div>
+            <div class="consr">5.2</div>
+        </div>
+        <div class="cons">
+            <div class="consl">体水分率：</div>
+            <div class="consr">61.5</div>
+        </div>
+        <div class="cons">
+            <div class="consl">骨骼肌率：</div>
+            <div class="consr">37</div>
+        </div>
+        <div class="cons">
+            <div class="consl">骨矿含量：</div>
+            <div class="consr">2.9</div>
+        </div>
+        <div class="cons">
+            <div class="consl">脂肪体重：</div>
+            <div class="consr">2.9</div>
+        </div>
+        <div class="cons">
+            <div class="consl">脂肪指数：</div>
+            <div class="consr">2.9</div>
+        </div>
+        <div class="cons">
+            <div class="consl">去脂体重：</div>
+            <div class="consr">52.64</div>
+        </div>
+        <div class="cons">
+            <div class="consl">全身脂肌比：</div>
+            <div class="consr">0.39</div>
+        </div>
+        <div class="cons">
+            <div class="consl">腰臀比：</div>
+            <div class="consr">0.73</div>
+        </div>
+        <div class="cons">
+            <div class="consl">骨骼年龄：</div>
+            <div class="consr">24</div>
+        </div>
+    </div>
+    <div class="zk">
+        <div class="const">体测评价：</div>
+        <div  class="constr">主人，您有点偏瘦，而且体脂偏低。小燃觉得您可以适当的增加日常高蛋白膳食的摄入量，在运动方式上，可以多做锻炼，增强一下体质，建议保持充足和良好的睡眠呦.</div>
+    </div>
+    <div class="zk">
+        <div class="const">运动建议：</div>
+        <div  class="constr">1.主人，您有点偏瘦，而且体脂偏低。<br>2.小燃觉得您可以适当的增加日常高蛋白膳食的摄入量，在运动方式上，可以多做锻炼，增强一下体质，建议保持充足和良好的睡眠呦.</div>
+    </div>
+    <div class="zk">
+        <div class="const">控制建议：</div>
+        <div  class="constr"><span style="color:#3fc370">维持</span></div>
+    </div>
+    <div class="zk">
+        <div class="consb-l">
+        <div class="zktitle">
+            <div class="zktitlebox">
+                <div class="zktitleword">运动数据分析</div>
+                <div class="zktitlebler-b">
+                    <div class="bler ser" attr='w'><a class="" href="javascript:;">周</a></div>
+                    <div class="bler ser-color" attr='b'><a class="" href="javascript:;">月</a></div>
+                    <div class="bler ser-color" attr='b'><a class="" href="javascript:;">年</a></div>
+                </div>
+            </div>
+        </div>
+        <div id="pieChart" style="width:60%;height:200px;float:left"></div>
+        <div class="pexp">
+            <div class="pexp-h">06-12至06-18</div>
+            <div class="pexp-bic">
+                <div class="pexp-l pexp1"></div>
+                <div class="pexp-r">有氧34%</div>
+            </div>
+            <div class="pexp-bic">
+                <div class="pexp-l pexp2"></div>
+                <div class="pexp-r">耐力33%</div>
+            </div>
+            <div class="pexp-bic">
+                <div class="pexp-l pexp3"></div>
+                <div class="pexp-r">无氧33%</div>
+            </div>
+        </div>
+        <div class="mtitl">
+            <div class="mtitl-l">签到次数：<span>5次</span></div>
+            <div class="mtitl-r">平均到店时长：<span>7小时36分</span></div>
+        </div>
+        <div class="latit">运动项目</div>
+        <table width="100%" class="objs" border="0" cellpadding="2" cellspacing="0" >
+            <tr>
+                <td>步行</td>
+                <td>4436步</td>
+                <td class="green">141大卡</td>
+            </tr> <tr>
+                <td>慢跑</td>
+                <td>4436步</td>
+                <td class="green">141大卡</td>
+            </tr> <tr>
+                <td>跑步</td>
+                <td>4436步</td>
+                <td class="green">141大卡</td>
+            </tr> <tr>
+                <td>单车</td>
+                <td>4436步</td>
+                <td class="green">141大卡</td>
+            </tr>
+        </table>
+        </div>        
+        <div class="consb-r">
+            <div class="zktitle">
+            <div class="zktitlebox">
+                <div class="zktitleword">照片</div>
+            </div>
+        </div>
+            <div class="hpotp"></div>
+        </div>
+    </div>
+</body>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/echarts.common.min.js"></script>
+<script>
+    $('.bler').click(function(){
+        $(this).addClass('ser').removeClass('ser-color').siblings().removeClass('ser').addClass('ser-color');
+        if($(this).attr('attr')=='w'){
+            console.log('W');
+        }else{
+            console.log('B');
+        }
+    })
+    var wChart = echarts.init(document.getElementById('weightChart'));
+    var aliveOption = {
+        title: {
+            text: '',
+            left: 'center',
+            textStyle: {
+                fontSize: '14'
+            }
+        },
+        tooltip: {
+//            formatter: function(params) {
+//                return $('#monthSel').val() + '月' + 'params[0].name' + '日<br/>' + 'params[0].seriesName' + ' : ' + 'params[0].value';
+//            },
+            trigger: 'axis',
+            axisPointer: {
+                type: 'none'
+            }
+        },
+        grid: {
+            left: '1%',
+            right: '5%',
+            bottom: '1%',
+            top: '20%',
+            containLabel: true
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            splitLine: {
+                show: true,
+                lineStyle:{
+                    color: '#eee'
+                }
+            },
+            data: ['周一','周二','周三','周四','周五','周六','周日']
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: false,
+            splitLine: {
+                show: true,
+                lineStyle:{
+                    color: '#eee'
+                }
+            }
+        },
+        series: [{
+            name: '当日活跃人数',
+            type: 'line',
+//            smooth: true,
+            symbolSize:'8',
+            stack: '总数',
+            data: [11, 11, 15, 13, 12, 13, 10],
+            areaStyle: {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                        offset: 0,
+                        color: 'rgb(71, 194, 116)'
+                    }, {
+                        offset: 1,
+                        color: 'rgb(255, 255, 255)'
+                    }])
+                }
+            },
+        }],
+        color:['#3fc370']
+    }
+    wChart.setOption(aliveOption);
+    var pChart = echarts.init(document.getElementById('pieChart'));
+    var userOption = {
+	tooltip: {
+		trigger: 'item',
+		formatter: "{a} <br/>{b}: {c} ({d}%)"
+	},
+	// legend: {
+	// 	orient: 'vertical',
+	// 	left: 'right',
+	// 	data: ['已办卡', '未办卡']
+	// },
+	series: [{
+		name: '用户数',
+		type: 'pie',
+		radius: ['40%', '80%'],
+		// center: ['35%', '50%'],
+		avoidLabelOverlap: false,
+
+		label: {
+			normal: {
+				show: false,
+				position: 'center'
+			},
+			emphasis: {
+				show: true,
+				formatter: "{d}%",
+				textStyle: {
+					fontWeight: 'bold'
+				}
+			}
+		},
+		labelLine: {
+			normal: {
+				show: false
+			}
+		},
+		data: [{
+			value: 0,
+			name: '有氧'
+		}, {
+			value: 0,
+			name: '耐力'
+		}, {
+			value: 0,
+			name: '无氧'
+		}],
+		color:['#3fc370','#feba3b','#f25657']
+	}]
+};
+pChart.setOption(userOption);
+</script>
+</html>

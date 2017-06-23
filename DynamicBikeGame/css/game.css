@@ -1,0 +1,359 @@
+.game_div{
+	/*position:absolute;*/
+	width:100%;
+	/*height:760px;*/
+	background-color: #273341;
+	margin:0px;
+}
+#downloadBox {
+    display: none;
+}
+header {
+  z-index: 999;
+  top: 0;
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  background: #fff;
+  padding: 10px 0;
+}
+header img {
+  display: inline-block;
+  height: 30px;
+  margin: 0 10px;
+}
+header span {
+  vertical-align: top;
+  height: 30px;
+  line-height: 30px;
+  color: #666;
+  font-size: 12px;
+}
+header a {
+  float: right;
+  display: block;
+  font-size: 12px;
+  color: #fff;
+  background: #FBB84A;
+  line-height: 30px;
+  padding: 0 10px;
+  margin: 0px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+.hot_time{
+	display: none;
+	width: 100%;
+	height: 24px;
+	line-height: 24px;
+	padding-top: 11px;
+	text-align: center;
+}
+.hot_time img{
+	display: inline-block;
+	width: 12px;
+	/*border: 2px;*/
+	border-radius: 12px;
+	background: #2AC0BF;
+	padding: 3.3px;
+	margin-bottom: 5px;
+}
+.hot_time p{
+	display: inline-block;
+	height: 24px;
+	line-height: 24px;
+	font-size: 12px;
+	margin-left: 10px;
+}
+
+.hot_time span{
+	font-size: 10px;
+	margin-left: 10px;
+}
+
+.user_data{
+	/*position:absolute;*/
+	width:100%;
+	/*margin:10px;*/ 
+	padding-top:10px;
+}
+
+.user_rank{
+	float:left;
+	color:#feba3b;
+	font-size:40px;
+	text-align:center;
+	width:35%;
+	padding-top:18px;
+	overflow: hidden;
+}
+.user_rank span{
+	color:#ccc;
+	font-size:12px;
+}
+.user_icon{
+	float:left;
+	text-align:center;
+	width:30%;
+}
+
+.icon_img{
+	margin:0 auto;
+	background-color: #ffd600;
+	-webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border: 2px solid #ffffff;
+    width:66px;
+    height:66px;
+}
+.fav_btn{
+	margin:8px auto;
+	-webkit-border-radius: 33px;
+    -moz-border-radius: 33px;
+    background:url("./images/love_red.png") no-repeat 15px;
+	-moz-background-size:100% 100%;
+   	background-size:auto 65%;
+   	background-color:#324152; 
+    width:50px;
+    height:15px;
+    color:#ccc;
+	font-size:10px;
+	text-align:right;
+	padding-right:10px;
+	line-height: 15px;
+}
+.user_cal{
+	float:left;
+	color:#feba3b;
+	font-size:40px;
+	text-align:center;
+	width:35%;
+	padding-top:18px;
+	overflow: hidden;
+}
+.user_cal span{
+	color:#ccc;
+	font-size:12px;
+}
+.game_info{
+	/*position:absolute;*/
+	/*top:474px;*/
+	/*left:50px;
+	right:50px;*/
+	padding: 10px 12px;
+	height:200px;
+	margin-bottom: 8px;
+    overflow: hidden;
+}
+.game_info ul{
+	background-color: #324152;
+	-webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+	width:100%;
+	height:100%;
+	overflow: hidden;
+}
+.game_info ul li{
+	padding-left:42px;
+	height:50px;
+	font-size:12px;
+	color:#ccc;
+	line-height:50px;
+	border-bottom:1px solid #212d3b;
+}
+.game_info ul li a{
+	color:#ccc;
+}
+
+#g_gym{
+	background:url("./images/owner.png") no-repeat 12px;
+   	background-size:auto 50%;
+}
+#g_time{
+	background:url("./images/time.png") no-repeat 12px;
+   	background-size:auto 50%;
+}
+#g_rule{
+	background:url("./images/info.png") no-repeat 12px;
+   	background-size:auto 50%;
+}#g_more{
+	background:url("./images/rank.png") no-repeat 12px;
+   	background-size:auto 50%;
+}
+
+#g_gym a{
+	display:block;
+	background:url("./images/more.png") no-repeat 95%;
+   	background-size:auto 30%;
+}
+#g_rule a{
+	display:block;
+	background:url("./images/more.png") no-repeat 95%;
+   	background-size:auto 30%;
+}
+#g_more a{
+	display:block;
+	background:url("./images/more.png") no-repeat 95%;
+   	background-size:auto 30%;
+}
+.rank_div{
+	/*position:absolute;*/
+	width:100%;
+	/*top:760px;*/
+	height:auto;
+}
+#game_rank_tb{
+	color:#212121;
+	width:100%;
+	border-top:1px #273341 solid;
+	border-left:0px #273341 solid;
+	margin:0px;
+	padding:0px;
+}
+#game_rank_tb th{
+    line-height: 33px;
+	font-size: 10px;
+	background-color:#273341;
+	color:#fff;
+	vertical-align: middle;
+}
+#game_rank_tb td{
+	height:50px;
+	vertical-align: middle;
+	/*text-align:center;*/
+	border:none;
+}
+
+.gtb_td_1{
+    text-align:center;
+    font-size:18px;
+}
+
+.gtb_td_2{
+	text-align: left;
+	vertical-align: middle;
+	font-size:12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.gtb_td_2 span{
+	margin-top:8px;
+	margin-left:10px;
+	float:left;
+    text-align: center;
+	font-size:12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.gtb_td_2_man{
+	width:27px;
+	height:27px;
+	margin-left:10px;
+	-webkit-border-radius: 66px;
+    -moz-border-radius: 66px;
+    border:2px #529fdf solid;
+    float:left;
+}
+.gtb_td_2_women{
+	width:27px;
+	height:27px;
+	float:left;
+	margin-left:10px;
+	-webkit-border-radius: 66px;
+    -moz-border-radius: 66px;
+    border:2px #ff6f94 solid;
+}
+.gtb_td_3{
+	background:url("./images/love_red.png") no-repeat left;
+   	background-size:auto 20%;
+   	padding-left:22px;
+   	font-size:13px;
+    text-align: center;
+}
+.gtb_td_3 span{
+	font-size:10px;
+}
+.gtb_td_4{
+	color:#ff9734;
+   	text-align:center;
+   	font-size: 18px;
+}
+.gtb_td_4 span{
+	font-size:10px;
+}
+.operationDiv{
+	position:fixed;
+	bottom:3px;
+	left:50%;
+	margin-left:-42px;
+	width:84px;
+	height:84px;
+	-webkit-border-radius: 66px;
+    -moz-border-radius: 66px;
+	z-index:10000;
+	background:#ff9734;
+	opacity:0.5;
+	box-shadow: 0px 10px 5px #888888;
+	display:none;
+    animation:myfirst 0.5s infinite linear;
+    -webkit-animation:myfirst 0.5s infinite linear; /* Safari and Chrome */
+}
+#load{display:none;}
+#operationBtn{
+	position:fixed;
+	bottom:12.5px;
+	left:50%;
+	margin-left:-33px;
+	width:66px;
+	height:66px;
+	-webkit-border-radius: 66px;
+    -moz-border-radius: 66px;
+	background:#ff9734;
+	z-index:11001;
+	opacity:1.0;
+	color:#ffffff;
+	font-size:12px;
+	line-height:66px;
+	text-align:center;
+	display:none;
+}
+.downloadDiv{
+	position:fixed;
+	bottom:0px;
+	width:100%;
+	height:50px;
+	background:url("./images/download.png") no-repeat bottom;
+   	background-size:100% auto;
+    display:none;
+   	z-index:10101;
+}
+.countDiv{
+	position:fixed;
+	width:100%;
+	height:100%;
+	top:0px;
+	left:0px;
+	background:#000000;
+	opacity:0.8;
+	color:#ffffff;
+	font-size:66px;
+	line-height:736px;
+	text-align:center;
+/*	display:none;*/
+   	z-index:15101;
+}
+@keyframes myfirst
+{
+from {transform: scale(1.0);}
+to {transform: scale(1.1);}
+}
+
+@-webkit-keyframes myfirst /* Safari and Chrome */
+{
+from {-webkit-transform: scale(1.0);transform: scale(1.0);}
+to {-webkit-transform: scale(1.1);transform: scale(1.1);}
+}

@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Swiper中文网基础演示(www.swiper.com.cn)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+
+<link rel="stylesheet" href="css/idangerous.swiper.css">
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/idangerous.swiper.min.js"></script>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+    font-family: "微软雅黑"
+}
+#header {
+	position:fixed;
+	left:0;
+	top:0;
+	z-index:999;
+	width: 100%;
+	height: 43px;
+	overflow: hidden;
+	background: #fdfdfc;
+	font: 12px/40px hiragino sans gb, microsoft yahei, simsun;
+	box-shadow:3px 3px 3px rgba(0,0,0,0.2);
+}
+#top-line {
+	width: 100%;
+	height: 3px;
+	line-height: 0;
+	font-size: 0;
+	overflow: hidden;
+	text-align: center;
+	z-index: 1;
+	background-color: #0fa6ea;
+	background: -webkit-linear-gradient(left, rgba(15,166,234,1) 0, rgba(89,204,24,1) 10%, rgba(15,166,234,1) 60%, rgba(15,166,234,1) 100%);
+	background: -moz-linear-gradient(left, rgba(15,166,234,1) 0, rgba(89,204,24,1) 10%, rgba(15,166,234,1) 60%, rgba(15,166,234,1) 100%);
+	background: -ms-linear-gradient(left, rgba(15,166,234,1) 0, rgba(89,204,24,1) 10%, rgba(15,166,234,1) 60%, rgba(15,166,234,1) 100%);
+    background: -o-linear-gradient(left, rgba(15,166,234,1) 0, rgba(89,204,24,1) 10%, rgba(15,166,234,1) 60%, rgba(15,166,234,1) 100%);
+	background: linear-gradient(left, rgba(15,166,234,1) 0, rgba(89,204,24,1) 10%, rgba(15,166,234,1) 60%, rgba(15,166,234,1) 100%);
+}
+#header .swiper-slide {
+	padding: 0 20px;
+    font-size: 14px;
+}
+.tabs .swiper-slide.active {
+    /*border-top: 2px solid #2a70be;*/
+    /*margin-top: -2px;*/
+    -webkit-background-size: 64px 39px;
+    -moz-background-size: 64px 39px;
+    -o-background-size: 64px 39px;
+    background-size: 64px 39px;
+    background-position: left top;
+    color: #eaad37;
+}
+#tabs-container{background: #efefef;}
+.news-list{margin-top: 43px;}    
+.news-list li{
+    list-style: none;
+    font-size: 1.125em;
+}
+    .icons{float: left;width: 18%;margin-right: 4%;}
+    .icons img{display: block;float: left;width: 100%;}
+    .isoe{padding: 15px 0;overflow: hidden;margin: 0 4%;}
+    .isoer{overflow: hidden;margin: 0 4%;}
+    .isoerbiaochi{overflow: hidden;padding: 0 4%;}
+    .isoer p{color: #646464;font-size: 1.28rem;word-spacing:8px; letter-spacing: 1px;text-align:justify;;line-height: 1.6rem}
+    .iconsr{float: left;line-height: 53px;color: #404040;font-size: 1.4rem;margin-right: 4%;}
+    .iconsspan{float: left;line-height: 53px;color: #3fc370;font-size: 2.4rem;}
+    .biaochi{width: 100%;height: 40px;padding-top: 40px;margin-bottom: 20px;position: relative;}
+    .itsem{width: 20%;float: left;height: 6px;position: relative;}
+    .itsem:nth-child(1){background: #5cd4c4}
+    .itsem:nth-child(2){background: #3ec370}
+    .itsem:nth-child(3){background: #ffb337}
+    .itsem:nth-child(4){background: #f66a59}
+    .itsem:nth-child(5){background: #f4523d}
+    .itsemaa{background: #3ec370;float: left;height: 6px;position: relative;}
+    .itsembb{background: #ffb337;float: left;height: 6px;position: relative;}
+    .itsemcc{background: #f66a59;float: left;height: 6px;position: relative;}
+    .itsem1{position: absolute;right: -20px;top: -22px;width: 40px;height: 20px;font-size: 1.2rem; text-align: center;z-index: 1;line-height: 20px;color: #646464}
+    .shier{color:#36c068;font-size: 1.6rem;margin-bottom: 6px;}
+    .shierp{margin-bottom: 20px;}
+    .itsembis{width: 20%;float: left;text-align: center;font-size: 1.2rem;color: #646464;margin-top: 3px;}
+    .headvalue{position: absolute;left: -10px;top: 32px;display: block;width: 20px;height: 20px;}
+    .headvalue img{display: block;width: 100%;}
+    .agebc{width: 100%;background:#3ec370;height: 6px;font-size: 1.2rem;}
+    .agemdet{color:#646464;text-align: center;font-size: 1.2rem;}
+    .jrlv{width: 50%;}
+    .zftz{width: 25%;}
+    .sfl{width: 33.33%}
+</style>
+</head>
+<body>
+<div id="header">
+  <div id="top-line"></div>
+  <div class="swiper-wrapper tabs">
+    <div class="swiper-slide active">BMI</div>
+    <div class="swiper-slide">身体年龄</div>
+    <div class="swiper-slide">基础代谢率</div>
+    <div class="swiper-slide">肌肉</div>
+    <div class="swiper-slide">脂肪</div>
+    <div class="swiper-slide">骨量</div>
+    <div class="swiper-slide">水分</div>
+    <div class="swiper-slide">内脏脂肪</div>
+    <div class="swiper-slide">蛋白质</div>
+  </div>
+</div>
+ <div id="tabs-container" class="swiper-container">
+    <div class="swiper-wrapper">
+          <div class="swiper-slide">
+        <div class="content-slide">
+        <ul class="news-list">
+            <li class="isoe">
+               <div class="icons"><img src="css/images/bmi.png" alt=""></div>
+               <div class="iconsr">BMI</div>
+               <div class="iconsspan">21.6</div>
+            </li>
+            <li class="isoer">
+                <p>BMI(Body Mass Index)是国际上用于衡量人体胖瘦程度的标准。亚洲地区的BMI水平整体低于欧洲国家，因此我们使用的是适合亚洲人体体质的标准。</p>
+            </li>
+            <li class="isoerbiaochi">
+                <div class="biaochi">
+                    <div class="itsem">
+                        <div class="itsem1">18.5</div>
+                    </div>
+                    <div class="itsem">
+                        <div class="itsem1">24.0</div>
+                    </div>
+                    <div class="itsem">
+                        <div class="itsem1">28.0</div>
+                    </div>
+                    <div class="itsem">
+                        <div class="itsem1">35.0</div>
+                    </div>
+                    <div class="itsem"></div>
+                    <div class="itsembis">偏瘦</div>
+                    <div class="itsembis">正常</div>
+                    <div class="itsembis">偏胖</div>
+                    <div class="itsembis">肥胖</div>
+                    <div class="itsembis">极胖</div>
+                    <div class="headvalue"><img src="css/images/happy.png" alt=""></div>
+                </div>
+            </li>
+            <li class="isoer">
+                <div class="shier">BMI正常</div>
+                <p class="shierp">目前BMI指数正常，身材指数完美，要继续保持哦。</p>
+            </li>
+            <li class="isoer">
+                <div class="shier">此处有妙招</div>
+                <p class="shierp">保持规律的生活方式，减少熬夜多运动，每周安排两到三次运动可以保持身体的基础代谢，使身体循环能力增强。运动后记得伸拉放松哦。</p>
+            </li>
+        </ul>
+        </div>
+              </div>
+          <div class="swiper-slide">
+            <div class="content-slide">
+             <ul class="news-list">
+            <li class="isoe">
+           <div class="icons"><img src="css/images/bodyage.png" alt=""></div>
+           <div class="iconsr">身体年龄</div>
+           <div class="iconsspan">23</div>
+        </li>
+        <li class="isoer">
+            <p>身体年龄以基础代谢率为基础，综合身高、体重、脂肪、肌肉等指标得出的数值，主要取决于生活方式和健康状况。</p>
+        </li>
+        <li class="isoerbiaochi">
+            <div class="biaochi">
+                <div class="agebc"></div>
+                <div class="agemdet">您的身体年龄：23岁</div>
+            </div>
+        </li>
+        <li class="isoer">
+            <div class="shier">身体年龄年轻</div>
+            <p class="shierp">身体年龄年轻，表明各项机能正常，要继续保持哦。</p>
+        </li>
+        <li class="isoer">
+            <div class="shier">此处有妙招</div>
+            <p class="shierp">保持规律的生活方式，坚持运动，保持合理作息和营养膳食，每周安排两到三次运动可以保持身体的基础代谢，使身体循环能力增强。运动后记得伸拉放松哦。</p>
+        </li>
+        </ul>
+            </div>
+</div>
+          <div class="swiper-slide">
+                <div class="content-slide"> 
+                <ul class="news-list">
+               <li class="isoe">
+               <div class="icons"><img src="css/images/daix.png" alt=""></div>
+               <div class="iconsr">基础代谢率</div>
+               <div class="iconsspan">1754</div>
+            </li>
+            <li class="isoer">
+                <p>BMI(Body Mass Index)是国际上用于衡量人体胖瘦程度的标准。亚洲地区的BMI水平整体低于欧洲国家，因此我们使用的是适合亚洲人体体质的标准。</p>
+            </li>
+            <li class="isoerbiaochi">
+                <div class="biaochi">
+                <div class="agebc"></div>
+                <div class="agemdet">您的基础代谢率：1745大卡/天</div>
+            </div>
+            </li>
+            <li class="isoer">
+                <div class="shier">BMI正常</div>
+                <p class="shierp">目前BMI指数正常，身材指数完美，要继续保持哦。</p>
+            </li>
+            <li class="isoer">
+                <div class="shier">此处有妙招</div>
+                <p class="shierp">保持规律的生活方式，减少熬夜多运动，每周安排两到三次运动可以保持身体的基础代谢，使身体循环能力增强。运动后记得伸拉放松哦。</p>
+            </li>
+        </ul>
+        </div>
+      </div>
+      <div class="swiper-slide">
+                <div class="content-slide"> 
+                <ul class="news-list">
+               <li class="isoe">
+               <div class="icons"><img src="css/images/muso.png" alt=""></div>
+               <div class="iconsr">肌肉</div>
+               <div class="iconsspan">51%</div>
+            </li>
+            <li class="isoer">
+                <p>BMI(Body Mass Index)是国际上用于衡量人体胖瘦程度的标准。亚洲地区的BMI水平整体低于欧洲国家，因此我们使用的是适合亚洲人体体质的标准。</p>
+            </li>
+            <li class="isoerbiaochi">
+                <div class="biaochi">
+                    <div class="itsem jrlv">
+                        <div class="itsem1">46%</div>
+                    </div>
+                    <div class="itsem jrlv"></div>
+                    <div class="itsembis jrlv">偏低</div>
+                    <div class="itsembis jrlv">正常</div>
+                    <div class="headvalue"><img src="css/images/sad.png" alt=""></div>
+                </div>
+            </li>
+            <li class="isoer">
+                <div class="shier">BMI正常</div>
+                <p class="shierp">目前BMI指数正常，身材指数完美，要继续保持哦。</p>
+            </li>
+            <li class="isoer">
+                <div class="shier">此处有妙招</div>
+                <p class="shierp">保持规律的生活方式，减少熬夜多运动，每周安排两到三次运动可以保持身体的基础代谢，使身体循环能力增强。运动后记得伸拉放松哦。</p>
+            </li>
+        </ul>
+        </div>
+      </div>
+       <div class="swiper-slide">
+                <div class="content-slide"> 
+                <ul class="news-list">
+               <li class="isoe">
+               <div class="icons"><img src="css/images/zf.png" alt=""></div>
+               <div class="iconsr">脂肪</div>
+               <div class="iconsspan">23.9%</div>
+            </li>
+            <li class="isoer">
+                <p>BMI(Body Mass Index)是国际上用于衡量人体胖瘦程度的标准。亚洲地区的BMI水平整体低于欧洲国家，因此我们使用的是适合亚洲人体体质的标准。</p>
+            </li>
+            <li class="isoerbiaochi">
+                <div class="biaochi">
+                    <div class="itsem zftz">
+                        <div class="itsem1">20%</div>
+                    </div>
+                    <div class="itsem zftz">
+                        <div class="itsem1">34%</div>
+                    </div>
+                    <div class="itsem zftz">
+                        <div class="itsem1">39%</div>
+                    </div>
+                    <div class="itsem zftz"></div>
+                    <div class="itsembis zftz">偏低</div>
+                    <div class="itsembis zftz">正常</div>
+                    <div class="itsembis zftz">偏胖</div>
+                    <div class="itsembis zftz">肥胖</div>
+                    <div class="headvalue"><img src="css/images/sad.png" alt=""></div>
+                </div>
+            </li>
+            <li class="isoer">
+                <div class="shier">BMI正常</div>
+                <p class="shierp">目前BMI指数正常，身材指数完美，要继续保持哦。</p>
+            </li>
+            <li class="isoer">
+                <div class="shier">此处有妙招</div>
+                <p class="shierp">保持规律的生活方式，减少熬夜多运动，每周安排两到三次运动可以保持身体的基础代谢，使身体循环能力增强。运动后记得伸拉放松哦。</p>
+            </li>
+        </ul>
+        </div>
+      </div>
+      <div class="swiper-slide">
+                <div class="content-slide"> 
+                <ul class="news-list">
+               <li class="isoe">
+               <div class="icons"><img src="css/images/gg.png" alt=""></div>
+               <div class="iconsr">骨量</div>
+               <div class="iconsspan">4.5%</div>
+            </li>
+            <li class="isoer">
+                <p>BMI(Body Mass Index)是国际上用于衡量人体胖瘦程度的标准。亚洲地区的BMI水平整体低于欧洲国家，因此我们使用的是适合亚洲人体体质的标准。</p>
+            </li>
+            <li class="isoerbiaochi">
+                <div class="biaochi">
+                    <div class="agebc"></div>
+                    <div class="agemdet">您的骨骼含量占身体重量的：4.5%</div>
+                </div>
+            </li>
+            <li class="isoer">
+                <div class="shier">BMI正常</div>
+                <p class="shierp">目前BMI指数正常，身材指数完美，要继续保持哦。</p>
+            </li>
+            <li class="isoer">
+                <div class="shier">此处有妙招</div>
+                <p class="shierp">保持规律的生活方式，减少熬夜多运动，每周安排两到三次运动可以保持身体的基础代谢，使身体循环能力增强。运动后记得伸拉放松哦。</p>
+            </li>
+        </ul>
+        </div>
+      </div>
+      <div class="swiper-slide">
+                <div class="content-slide"> 
+                <ul class="news-list">
+               <li class="isoe">
+               <div class="icons"><img src="css/images/wt.png" alt=""></div>
+               <div class="iconsr">水分</div>
+               <div class="iconsspan">55.2%</div>
+            </li>
+            <li class="isoer">
+                <p>BMI(Body Mass Index)是国际上用于衡量人体胖瘦程度的标准。亚洲地区的BMI水平整体低于欧洲国家，因此我们使用的是适合亚洲人体体质的标准。</p>
+            </li>
+            <li class="isoerbiaochi">
+                <div class="biaochi">
+                    <div class="itsem sfl">
+                        <div class="itsem1">45.0%</div>
+                    </div>
+                    <div class="itsem sfl">
+                        <div class="itsem1">60.0%</div>
+                    </div>
+                    <div class="itsem sfl"></div>
+                    <div class="itsembis sfl">偏低</div>
+                    <div class="itsembis sfl">正常</div>
+                    <div class="itsembis sfl">偏胖</div>
+                    <div class="headvalue"><img src="css/images/sad.png" alt=""></div>
+                </div>
+            </li>
+            <li class="isoer">
+                <div class="shier">BMI正常</div>
+                <p class="shierp">目前BMI指数正常，身材指数完美，要继续保持哦。</p>
+            </li>
+            <li class="isoer">
+                <div class="shier">此处有妙招</div>
+                <p class="shierp">保持规律的生活方式，减少熬夜多运动，每周安排两到三次运动可以保持身体的基础代谢，使身体循环能力增强。运动后记得伸拉放松哦。</p>
+            </li>
+        </ul>
+        </div>
+      </div>
+      <div class="swiper-slide">
+                <div class="content-slide"> 
+                <ul class="news-list">
+               <li class="isoe">
+               <div class="icons"><img src="css/images/nzzf.png" alt=""></div>
+               <div class="iconsr">内脏脂肪</div>
+               <div class="iconsspan">3</div>
+            </li>
+            <li class="isoer">
+                <p>BMI(Body Mass Index)是国际上用于衡量人体胖瘦程度的标准。亚洲地区的BMI水平整体低于欧洲国家，因此我们使用的是适合亚洲人体体质的标准。</p>
+            </li>
+            <li class="isoerbiaochi">
+                <div class="biaochi">
+                    <div class=" sfl itsemaa">
+                        <div class="itsem1">10</div>
+                    </div>
+                    <div class=" sfl itsembb">
+                        <div class="itsem1">15</div>
+                    </div>
+                    <div class=" sfl itsemcc"></div>
+                    <div class="itsembis sfl">正常</div>
+                    <div class="itsembis sfl">偏高</div>
+                    <div class="itsembis sfl">超高</div>
+                    <div class="headvalue"><img src="css/images/sad.png" alt=""></div>
+                </div>
+            </li>
+            <li class="isoer">
+                <div class="shier">BMI正常</div>
+                <p class="shierp">目前BMI指数正常，身材指数完美，要继续保持哦。</p>
+            </li>
+            <li class="isoer">
+                <div class="shier">此处有妙招</div>
+                <p class="shierp">保持规律的生活方式，减少熬夜多运动，每周安排两到三次运动可以保持身体的基础代谢，使身体循环能力增强。运动后记得伸拉放松哦。</p>
+            </li>
+        </ul>
+        </div>
+      </div>
+            <div class="swiper-slide">
+                <div class="content-slide"> 
+                <ul class="news-list">
+               <li class="isoe">
+               <div class="icons"><img src="css/images/nzzf.png" alt=""></div>
+               <div class="iconsr">蛋白质</div>
+               <div class="iconsspan">19.4%</div>
+            </li>
+            <li class="isoer">
+                <p>BMI(Body Mass Index)是国际上用于衡量人体胖瘦程度的标准。亚洲地区的BMI水平整体低于欧洲国家，因此我们使用的是适合亚洲人体体质的标准。</p>
+            </li>
+            <li class="isoerbiaochi">
+                <div class="biaochi">
+                    <div class="itsem sfl">
+                        <div class="itsem1">16%</div>
+                    </div>
+                    <div class="itsem sfl">
+                        <div class="itsem1">20%</div>
+                    </div>
+                    <div class="itsem sfl"></div>
+                    <div class="itsembis sfl">偏低</div>
+                    <div class="itsembis sfl">标准</div>
+                    <div class="itsembis sfl">偏高</div>
+                    <div class="headvalue"><img src="css/images/sad.png" alt=""></div>
+                </div>
+            </li>
+            <li class="isoer">
+                <div class="shier">BMI正常</div>
+                <p class="shierp">目前BMI指数正常，身材指数完美，要继续保持哦。</p>
+            </li>
+            <li class="isoer">
+                <div class="shier">此处有妙招</div>
+                <p class="shierp">保持规律的生活方式，减少熬夜多运动，每周安排两到三次运动可以保持身体的基础代谢，使身体循环能力增强。运动后记得伸拉放松哦。</p>
+            </li>
+        </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+<script type="text/javascript">
+window.onload = function() {
+    function htmlfont(){
+        var sw = $(window).width();
+                    if(sw>640){
+                        sw = 640;
+                    }
+        $("html").css("font-size",sw/1080*32.8125+"px");
+    }
+    htmlfont();
+    
+    var img = new Image();
+    img.src='css/images/bmi.png';
+    img.onload = function(){
+        $('.iconsr').css('lineHeight',$('.icons').height()+'px');          
+        $('.iconsspan').css('lineHeight',$('.icons').height()-3+'px');          
+    }
+  var mySwiper1 = new Swiper('#header',{
+	  freeMode : true,
+	  slidesPerView : 'auto',
+  });
+  var tabsSwiper = new Swiper('#tabs-container',{
+    speed:500,
+    onSlideChangeStart: function(){
+      $(".tabs .active").removeClass('active');
+      $(".tabs .swiper-slide").eq(tabsSwiper.activeIndex).addClass('active');  
+    }
+  })
+  $(".tabs .swiper-slide").on('touchstart mousedown',function(e){
+    e.preventDefault()
+    $(".tabs .active").removeClass('active')
+    $(this).addClass('active')
+    tabsSwiper.swipeTo( $(this).index() )
+  })
+  $(".tabs .swiper-slide").click(function(e){
+    e.preventDefault()
+  })
+  
+}
+</script>
+</body>
+</html>

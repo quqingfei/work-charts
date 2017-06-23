@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>empty</title>
+</head>
+<body>
+   <script src="http://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
+    <script>
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); // 构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg); // 匹配目标参数
+            if (r != null)
+                return unescape(r[2]);
+            return null; // 返回参数值
+        }
+        if(navigator.userAgent.indexOf('fatburn')<0){
+            window.location.href = "http://www.zhaiker.cn"
+        }else{
+            $.ajax({
+                type: 'get',
+                dataType: 'json',
+                url:'../fatburn/caochsystem/GroupCoachSystemDeviceCodeAction!getByCode.zk',
+                data:{code:getUrlParam('code')},
+                success: function(res){
+                    window.location.href = "rate.html?room=001&deviceId="+res.deviceInfo.deviceId+"&gymId="+res.deviceInfo.gymId
+                }
+            })         
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+@charset "UTF-8";
+
+/* CSS reset */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+margin: 0;
+padding: 0;
+border: 0;
+outline: 0;
+font-size: 100%;
+vertical-align: baseline;
+background: transparent;
+overflow-x: hidden;
+}
+a ,a img{border:0;outline:none;}
+a{display:block;text-decoration:none;}
+img{border: 0;}
+
+ol, ul {
+list-style: none;
+}
+blockquote, q {
+quotes: none;
+}
+blockquote:before,blockquote:after,
+q:before, q:after {
+content: '';
+content: none;
+}
+/* remember to define focus styles! */
+:focus {
+outline: 0;}
+/* remember to highlight inserts somehow! */
+ins {
+text-decoration: none;
+}
+del {
+text-decoration: line-through;
+}
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+border-collapse: collapse;
+border-spacing: 0;
+} 
+.clearfix{ *zoom:1;}
+.clearfix:after {
+	content:".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+	font-size:0;
+}
+
+body {
+	margin:0;
+	padding:0;
+	font-family: tahoma,arial,sans-serif;
+	font-size: 12px;
+	line-height: 1;
+}
+.clearfix{ *zoom:1;}
+.clearfix:after {
+	content:".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+	font-size:0;
+}
+ul{margin:0;padding:0;list-style:none;}
+p,h1{margin:0;padding:0}
+a img{border:none;}
+h1,h2,h3,h4,h5{font-family:"STHei","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;font-weight: normal;}
+body,html{ margin:0px; width:100%; height:100%; font-family: tahoma,arial,sans-serif; color:#FFF}
+
+/*font family*/
+@font-face {
+	font-family: 'segeoui';
+	src: url('fonts/segeoui.eot');
+	src: local('☺'), url('fonts/segeoui.woff') format('woff'), url('fonts/segeoui.ttf') format('truetype'), url('fonts/segeoui.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+    font-family: "BebasNeueRegular";
+    font-style: normal;
+    font-weight: normal;
+    src: url("fonts/bebas-neue-fontfacekit/bebasneue-webfont.eot?#iefix") format("embedded-opentype"),
+     url("fonts/bebas-neue-fontfacekit/bebasneue-webfont.woff") format("woff"),
+      url("fonts/bebas-neue-fontfacekit/bebasneue-webfont.ttf") format("truetype"), 
+      url("fonts/bebas-neue-fontfacekit/bebasneue-webfont.svg#webfont") format("svg");
+}
+
+/*From*/
+textarea{overflow:auto;}

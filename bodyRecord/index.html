@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>人体成分健康分析报告</title>
+</head>
+<style>
+    body{background-color: #eee;padding: 0;margin: 0;font-family: "PingFang SC","STHeitiSC-Light","Helvetica-Light","Helvetica Neue",Helvetica,"Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;}
+    .contanier{
+        width: 1080px;
+        margin: 0 auto;
+        overflow: hidden;
+        background-color: white;
+    } 
+    .header{background: url('img/head.jpg') no-repeat;width: 1080px;height: 142px;background-size: cover;}
+    .body-warpper{
+        width: 665px;
+        background: white;
+        padding-left: 40px;
+        float: left;
+    }
+    .warpperhead{
+        padding: 45px 0 47px 0;
+        
+        overflow: hidden;
+    }
+    .wraoo{width: 33.33%;font-size: 22px;float: left;}
+    .bot{margin-top: 26px;}
+    .title{margin: 0;font-size: 30px;height: 30px;line-height: 30px;margin-bottom: 24px;}
+    .duio{width: 100%;text-align: center;border-right:1px solid #ccc;border-bottom:1px solid #ccc;vertical-align="middle";font-size: 18px;}
+    .duio thead{background-color: #f4f4f4;width: 100%;}
+    .duio td{border-left:1px solid #ccc;border-top:1px solid #ccc;}
+    .duio tr{height: 60px;}
+    .body-right{width: 294px;background-color: white;float: right;padding-left: 40px;padding-right: 40px;}
+    .righttop{height: 176px;overflow: hidden;}
+    .rogle{float: left;width: 50%;height: 100%;text-align: center;}
+    .rogla{float: right;width: 50%;height: 100%;text-align: center;}
+    .tpd{margin-top: 40px;font-size: 24px;margin-bottom: 6px;}
+    .num{font-size: 60px;}
+    .bodytix{width: 100%;text-align: center;border-right:1px solid #ccc;border-bottom:1px solid #ccc;font-size: 18px;}
+    .bodytix td{border-left:1px solid #ccc;border-top:1px solid #ccc;width: 33.33%;height: 98px;line-height: 40px}
+    .top30{margin-top: 30px;}
+    .ticjsi{clear: both;padding: 0 40px 26px 40px;}
+    .idoe{overflow: hidden;font-size: 20px;}
+    .idoetitle,.idoep{float: left;}
+    ol,li{padding: 0;margin: 0;}
+    .idoep{margin-left: 28px;width: 87%;}
+    .idoep p{padding: 0;margin: 0;}
+    .print{position: fixed;bottom: 20px;width: 80px;height: 40px;right: 20px;}
+    @media print {
+        .print{display: none;}
+    }
+</style>
+<body>
+    <div class="contanier">
+        <div class="header"><img src="img/head.jpg" alt=""></div>
+        <div class="body-warpper">
+            <div class="warpperhead">
+                <div class="wraoo">
+                    <div class="top">姓名：<span id="name">-</span></div>
+                    <div class="bot">身高：<span id="height">-</span>CM</div>
+                </div>
+                <div class="wraoo">
+                    <div class="top">性别：<span id="sex">-</span></div>
+                    <div class="bot">日期：<span id="date">-</span></div>
+                </div>
+<!--
+                <div class="wraoo">
+                    <div class="top">年龄：<span id="age">-</span></div>
+                    <div class="bot">时间：<span id="time">-</span></div>
+                </div>
+-->
+            </div>
+            <h1 class="title">身体成分各项数据</h1>
+            <table id="listtice" class="duio" cellspacing="0">
+                <thead>
+                    <tr>
+                        <td>项目</td>
+                        <td>值</td>
+                        <td>参考值</td>
+                        <td>低标准</td>
+                        <td>标准</td>
+                        <td>超标准</td>
+                    </tr>
+                </thead>
+                <tbody>
+                   
+                </tbody>
+            </table>
+            
+        </div>
+        <div class="body-right">
+            <div class="righttop">
+                <div class="rogle">
+                    <div class="tpd">综合评分</div>
+                    <div class="num" id="sorce">-</div>
+                </div>
+                <div class="rogla">
+                    <div class="tpd">体格指数</div>
+                    <div class="num" id="BMInumber">-</div>
+                </div>
+            </div>
+            <h1 class="title">体型判定</h1>
+            <table class="bodytix" id="bodytix" cellspacing="0">
+                <tr>
+                    <td>隐形肥胖<br><span class="point0">&nbsp;</span></td>
+                    <td>偏胖<br/><span class="point1">&nbsp;</span></td>
+                    <td>肥胖<br/><span class="point2">&nbsp;</span></td>
+                </tr>
+                <tr>
+                    <td>偏瘦肌肉<br/><span class="point3">&nbsp;</span></td>
+                    <td>标准<br/><span class="point4">&nbsp;</span></td>
+                    <td>非常肌肉<br/><span class="point5">&nbsp;</span></td>
+                </tr>
+                <tr>
+                    <td>偏瘦<br/><span class="point6">&nbsp;</span></td>
+                    <td>标准肌肉<br/><span class="point7">&nbsp;</span></td>
+                    <td>运动不足<br/><span class="point8">&nbsp;</span></td>
+                </tr>
+            </table>
+            <h1 class="title top30">体重控制</h1>
+            <table class="duio" cellspacing="0">
+                <tbody>
+                    <tr>
+                        <td>理想体重</td>
+                        <td><span id="lxtz">-</span></td>
+                    </tr>
+                    <tr>
+                        <td>体重控制</td>
+                        <td><span id="tzkz">-</span></td>
+                    </tr>
+                    <tr>
+                        <td>脂肪控制</td>
+                        <td><span id="zfkz">-</span></td>
+                    </tr>
+                    <tr>
+                        <td>肌肉控制</td>
+                        <td><span id="jrkz">-</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h1 class="title top30">营养判断</h1>
+            <table class="duio" cellspacing="0">
+                <tbody>
+                    <tr>
+                        <td>蛋白质</td>
+                        <td><span id="danbaizhi">-</span></td>
+                    </tr>
+                    <tr>
+                        <td>无机盐</td>
+                        <td><span id="wujiyan">-</span></td>
+                    </tr>
+                    <tr>
+                        <td>脂肪</td>
+                        <td><span id="zhifang">-</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="ticjsi">
+            <h1 class="title" style="padding-top:30px;">营养判断</h1>
+            <div class="idoe">
+                <div class="idoetitle">运动建议：</div>
+                <div class="idoep">
+                    <ol>
+                        <li>每周3-4次的抗阻力训练、每次持续时间20-30min</li>
+                        <li>每周3-4次的有氧运动（根据相关体重选择不同类型的有氧项目）</li>
+                        <li>健身跑、低冲击运动单车、游泳、跳绳、爬楼梯等</li>
+                        <li>每次持续时间20-30 min</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="idoe">
+                <div class="idoetitle">膳食建议：</div>
+                <div class="idoep" style="margin-left: 5px;">
+                    <p>主食：粗粮为主、绿色蔬菜以包菜、生菜、芹菜、小白菜为主，肉制品；选用去皮鸡胸 
+               肉及鱼类。零食：少量坚果类食品</p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <button class="print" onclick="window.print();">打印</button>
+</body>
+<script src="https://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
+<script>
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); // 构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg); // 匹配目标参数
+        if (r != null)
+            return unescape(r[2]);
+        return null; // 返回参数值
+    }
+    $.ajax({
+        type:'get',
+        url:'/fatburn/GymBodyExamAction!getById.zk?id='+getUrlParam('id'),
+        dataType:'json',
+        success: function(res){
+            if(res.STATUS){
+                var data = res.gymMembers;
+                $('#name').text(decodeURI(getUrlParam('name')));
+                $('#height').text(data.height);
+                $('#sex').text(sex(data.sex));
+                $('#date').text(date(data.examTime));
+                $('#age').text('-');
+                $('#time').text(time(data.gmtCreate));
+                $('#sorce').text(data.score.toFixed(1));
+                $('#BMInumber').text( bmi(data.weight, data.height));
+                var ksk = $.parseJSON(data.gymBodyExamData);
+//                console.log(ksk)
+                var controlItems = ksk.controlItems;
+                $('#lxtz').text(controlItems[0].itemValue);
+                $('#tzkz').text(controlItems[1].itemValue);
+                $('#zfkz').text(controlItems[2].itemValue);
+                $('#jrkz').text(controlItems[3].itemValue);
+                var healthItems = ksk.healthItems;
+                $('#danbaizhi').text(healthItems[0].itemValue);
+                $('#wujiyan').text(healthItems[1].itemValue);
+                $('#zhifang').text(healthItems[2].itemValue);
+                var igimg = '<img src="./img/gre.png" alt="">';
+                console.log(ksk)
+                switch(ksk.bodyShape){
+                    case 0: $('#bodytix .point0').html(igimg); break;
+                    case 1: $('#bodytix .point1').html(igimg); break;
+                    case 2: $('#bodytix .point2').html(igimg); break;
+                    case 3: $('#bodytix .point3').html(igimg); break;
+                    case 4: $('#bodytix .point4').html(igimg); break;
+                    case 5: $('#bodytix .point5').html(igimg); break;
+                    case 6: $('#bodytix .point6').html(igimg); break;
+                    case 7: $('#bodytix .point7').html(igimg); break;
+                    case 8: $('#bodytix .point8').html(igimg); break;
+                }
+                $.each(ksk.dataItems, function(i,t){
+                    var start = null, end = null,istrue = null;
+                    switch(t.itemName){
+                       case "当前体重(KG)":start = t.stateValues[1].toFixed(1);end = '~'+t.stateValues[2].toFixed(1);break;
+                       case "体格指数(BMI)":start = t.stateValues[0];end = '~'+t.stateValues[1];break;
+                       case "脂肪":start = t.stateValues[0];end = '~'+t.stateValues[1];break;
+                       case "肌肉":start = t.stateValues[0];end = '~'+t.stateValues[1];break;
+                       case "水分":start = t.stateValues[0];end = '~'+t.stateValues[1];break;
+                       case "蛋白质":start = t.stateValues[0];end = '~'+t.stateValues[1];break;
+                       case "内脏脂肪":start = 0;end = '~'+t.stateValues[0];break;
+                       case "骨量":start = t.stateValues[0];end = '~'+t.stateValues[1];break;
+                       case "基础代谢":start = t.stateValues[0];end = '+';break;
+                       case "静态心率":start = 60;end = '~'+t.stateValues[0];break;
+//                       case "腰臀比":break;
+                       case "收缩压":start = t.stateValues[0];end = '~'+t.stateValues[1];break;
+                       case "舒张压":start = t.stateValues[0];end = '~'+t.stateValues[1];break;
+                       case "身体年龄":start = '-';end = t.stateValues[0];break;
+                       case "皮下脂肪":start = t.stateValues[0];end = '~'+t.stateValues[1];break;
+                   }
+                    switch(t.stateString){
+                        case "严重不足": istrue = "<td>"+igimg+"</td><td></td><td></td>";break;
+                        case "偏低":istrue = "<td>"+igimg+"</td><td></td><td></td>";break;
+                        case "不达标":istrue = "<td>"+igimg+"</td><td></td><td></td>";break;
+                        case "标准":istrue = "<td></td><td>"+igimg+"</td><td></td>";break;
+                        case "达标":istrue = "<td></td><td>"+igimg+"</td><td></td>";break;
+                        case "正常":istrue = "<td></td><td>"+igimg+"</td><td></td>";break;
+                        case "充足":istrue = "<td></td><td>"+igimg+"</td><td></td>";break;
+                        case "偏高":istrue = "<td></td><td></td><td>"+igimg+"</td>";break;
+                        case "严重超标":istrue = "<td></td><td></td><td>"+igimg+"</td>";break;
+                        case "严重偏高":istrue = "<td></td><td></td><td>"+igimg+"</td>";break;
+                    }
+                    if(t.itemName=="腰臀比"){return true;}
+                    $('#listtice').find('tbody').append('<tr>\
+                        <td>'+t.itemName+'</td>\
+                        <td>'+t.itemValue+'</td>\
+                        <td>（'+start+''+end+'）</td>'+istrue+'</tr>');
+                });
+            }else{
+                
+            }
+        }   
+    });
+    function sex(sex){
+        if(sex=="F")
+            return "女";
+        else
+            return "男";
+    }
+    function date(time){
+        var time = new Date(time);
+        var year = time.getFullYear();
+        var month = time.getMonth()+1;
+        var day = time.getDate();
+        month = month>9?month:"0"+month;
+        day = day>9?day:"0"+day;
+        return year+"-"+month+"-"+day;
+    }
+    function time(time){
+        var time = new Date(time);
+        var hour = time.getHours();
+        var minute = time.getMinutes();
+        var second = time.getSeconds();
+        hour = hour>9?hour:"0"+hour;
+        minute = minute>9?minute:"0"+minute;
+        second = second>9?second:"0"+second;
+        return hour+"-"+minute+"-"+second;
+    }
+    function bmi(weight,height){
+        return (weight/((height/100)*(height/100))).toFixed(1);
+    }
+</script>
+</html>

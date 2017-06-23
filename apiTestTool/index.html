@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="css/favicon.ico">
+
+    <title>登录系统</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/signin.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="container">
+
+      <form class="form-signin" role="form" onsubmit="return login()">
+        <h2 class="form-signin-heading" style="text-align: center;">登录系统</h2>
+        <input type="text" id="userName" class="form-control" placeholder="用户名" value="17092616621" required autofocus>
+        <input type="password" id="pwd" class="form-control" placeholder="密码" value="123456" required>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me" onclick="rememberMe()"> 记住密码
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+      </form>
+
+    </div> <!-- /container -->
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <!--  -->
+    <script type="text/javascript">
+    function login(){
+    	var userName = $("#userName").val();
+    	var pwd = $("#pwd").val();
+    	
+		var mflag = false;
+		var fflag = false;
+		$.ajax({
+			url  : '../manage/loginAction!login.zk', 
+			async : false ,
+			type : 'POST' ,
+			dataType : 'json',
+			data : {user_id : userName,user_pwd : pwd} ,
+			success: function(data){
+				if(data.STATUS) mflag = true ;
+	      	}
+		});
+		$.ajax({
+			url  : '../loginAction!login.zk', 
+			async : false ,
+			type : 'POST' ,
+			dataType : 'json',
+			data : {user_id : userName,user_pwd : pwd},
+			success: function(data){
+				if(data.STATUS) fflag = true ;
+	      	}
+		});
+		if(mflag||fflag){
+			location.href = 'main.html';
+		}else{
+			alert('用户名或密码错误!');
+		}
+		return false;
+    }
+    
+    function rememberMe(){
+    	var userName = $("#userName").val();
+    	var pwd = $("#pwd").val();
+    	if(userName) $.cookie('user',userName);
+    	if(pwd) $.cookie('pwd',pwd);
+    }
+    $(function(){
+    	var cuser = $.cookie('user');
+    	var cpwd = $.cookie('pwd');
+    	if(cuser) $("#userName").val(cuser) ;
+    	if(cpwd) $("#pwd").val(cpwd) ;
+    });
+    </script>
+  </body>
+</html>

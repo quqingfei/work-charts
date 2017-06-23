@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta name="MobileOptimized" content="320"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <link rel="stylesheet" href="./sweetalert.css">
+<title>连接设备</title>
+<style>
+    .middle{
+
+    -moz-user-select: none; /*火狐*/
+
+    -webkit-user-select: none; /*webkit浏览器*/
+
+    -ms-user-select: none; /*IE10*/
+
+    -khtml-user-select: none; /*早期浏览器*/
+
+    user-select: none;
+
+    }    
+</style>
+<body>
+<style>
+    html,body{width: 100%;height: 100%;margin: 0;padding: 0;}  
+    body{background: url(1.jpg) no-repeat 100% 0%;background-size: cover;}
+    .middle{width: 100%;height: 100%;}
+    #btn{width: 160px;height: 60px;font-size: 18px;position: absolute;top: 50%;left: 50%;margin-left: -80px;margin-top: -30px;   outline: none;border-radius: 2px;color: white;display: none;}
+    .bglue{background-color: #65CAD4;box-shadow: 0px 8px 22px 0px #00BCD4;    border: 1px solid #00BCD4;}
+    #tit{text-align: center;font-size: 16px;line-height: 40px;height: 40px;}
+    .bgary{background-color: #ccc;box-shadow: 0px 8px 22px 0px #ccc;    border: 1px solid #999;}
+    .rend{background-color: #F44336;position: fixed;bottom: 0;left: 0;width: 100%;height: 60px;line-height: 60px;font-size: 16px;color: white;text-align: center;display: none;}
+</style>
+<div class="middle">
+   <div id="tit"></div>
+    <button class="bglue" id="btn" val="0">连接设备</button>
+    <div class="rend" id="rend">清除设备</div>
+</div>
+<script src="http://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="sweetalert.min.js"></script>
+<script>
+    $(document).ready(function(){
+          function getSignData() {
+                if (!window.WebViewJavascriptBridge) {
+                    return false;
+                }
+                window.WebViewJavascriptBridge.callHandler('getSign', {},
+                    function(responseData) {
+                        deviceData = responseData;
+                    });
+                    return deviceData;
+            }
+            function connectWebViewJavascriptBridge(callback) {
+                if (window.WebViewJavascriptBridge) {
+                    callback(WebViewJavascriptBridge);
+                } else {
+                    document.addEventListener('WebViewJavascriptBridgeReady', function() {
+                        callback(WebViewJavascriptBridge);
+                    }, false);
+                }
+            }
+            connectWebViewJavascriptBridge(function(bridge) {
+                // 初始化
+                bridge.init(function(message, responseCallback) {
+                    var data = {
+                        'Javascript Responds': 'backApp'
+                    };
+                    responseCallback(data);
+                });
+                // oc调用js方法
+                bridge.registerHandler('zkBackEvent',function(data, responseCallback) {
+                    var responseData = '';
+                    responseCallback(responseData);
+                }); 
+                bridge.registerHandler('readyBack',function(data, responseCallback) {
+                    readyBack();
+                    var responseData = {
+                        'Javascript Says': 'readBack!'
+                    };
+                    responseCallback(responseData);
+                });    
+
+            });
+             // 获取url中的参数
+            function getUrlParam(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); // 构造一个含有目标参数的正则表达式对象
+                var r = window.location.search.substr(1).match(reg); // 匹配目标参数
+                if (r != null)
+                    return unescape(r[2]);
+                return null; // 返回参数值
+            }
+            var deviceId=getUrlParam('deviceId'),gymId=getUrlParam('gymId'),roomId=getUrlParam('room');
+            $('#btn').click(function(){
+                if($(this).attr('val')==0){
+                    $(this).attr('val',1);
+                    $(this).addClass('bgary');
+                    $.ajax({
+                        type: 'post',
+                        data: {gymId:gymId,roomId:roomId,deviceId:getUrlParam('deviceId')},
+                        url: '../fatburn/caochsystem/GroupCoachSystemDeviceAction!add.zk',
+                        dataType: 'json',
+                        success: function(data){
+                            if(data.STATUS){
+                                if(typeof(data.ERROR)=="undefined"){
+                                    $('#tit').html('<span style="color:#3fc370">连接成功！</span>');
+                                    $('#tit').show();
+                                    setTimeout(function(){
+                                        $('#tit').fadeOut(3000);
+                                        clearTimeout();
+                                    },100)
+                                    $('#rend').show();
+                                }else{
+                                    swal('页面过期请重新扫码');
+                                }
+                               
+                            }else{
+                                swal(data.INFO)
+                            }
+                        }
+                    })       
+                }
+                     
+            })
+            $('#rend').click(function(){
+                swal({   title: "清除设备?",   text: "",   type: "warning",   showCancelButton: true, cancelButtonText: "取消",   confirmButtonColor: "#DD6B55",   confirmButtonText: "确定",   closeOnConfirm: false }, function(){
+                     $.ajax({
+                        type: 'post',
+                        url: '../fatburn/caochsystem/GroupCoachSystemDeviceAction!cleanDevice.zk',
+                        dataType: 'json',
+                        success: function(data){
+                            if(data.STATUS){
+                                if(typeof(data.ERROR)=="undefined"){
+                                    $('#tit').html('<span style="color:#3fc370">清除成功！</span>');
+                                    $('#tit').show();
+                                    setTimeout(function(){
+                                        $('#tit').fadeOut(3000);
+                                        clearTimeout();
+                                    },100)
+                                    $('#rend').hide();
+                                    $('#btn').attr('val',0);
+                                    $('#btn').removeClass('bgary');
+                                    $('#btn').addClass('bglue');
+                                    $('#btn').show();
+                                    swal("清除设备!", "您已经成功清除了设备。", "success"); 
+                                }else{
+                                    swal('页面过期请重新扫码');
+                                }                                
+                            }else{
+                                swal(data.INFO);
+                            }
+                        }
+                    }) 
+                    
+                });
+               
+            })
+            //返回是否有设备
+            function hasDevice(){
+                $.ajax({
+                    type: 'post',
+                    data: {gymId:gymId,roomId:roomId},
+                    url: '../fatburn/caochsystem/GroupCoachSystemDeviceAction!hasDevice.zk',
+                    dataType: 'json',
+                    success: function(data){
+                        $('#tit').html("");
+                        if(data.STATUS){
+                            if(data.groupCoachSystemDevice.connectState===0){
+                                $('#tit').html('<span style="color:#f25657">连接失败！</span>');
+                                $('#rend').show();
+                            }
+                            if(data.groupCoachSystemDevice.connectState===1){
+                                $('#tit').html('<span style="color:#3fc370">连接成功！</span>');
+                            }
+                        }else{
+                            $('#tit').html('<span style="color:#f25657">'+data.INFO+'！</span>');
+                            $('#tit').show();
+                            setTimeout(function(){
+                                $('#tit').fadeOut(3000);
+                                clearTimeout();
+                            },100)
+                            $('#btn').show();
+                        }
+                    }
+                })
+            }
+            //清空我的设备
+            function cleanDevice(){
+                $.ajax({
+                    type: 'post',
+                    data: {gymId:gymId,roomId:roomId},
+                    url: '../fatburn/caochsystem/GroupCoachSystemDeviceAction!cleanDevice.zk',
+                    dataType: 'json',
+                    success: function(data){
+                        
+                    }
+                })
+            }//设备验证
+            function teseloae(data){
+                var s = encodeURI(data);
+                $.ajax({
+                    type: 'post',
+                    data: {sign:s},
+                    url: '../fatburn/ScoreAction!checkSign.zk',
+                    dataType: 'json',
+                    success: function(data){
+                        if(data.STATUS){
+                            if(typeof(data.ERROR)=="undefined"){
+                                hasDevice();
+                            }else{
+                                swal(data.ERROR);
+                            }                            
+                        }else{
+                            swal(data.INFO)
+                        }
+                    }
+                })
+            }
+
+            if(navigator.userAgent.indexOf('fatburn')<0){
+                window.location.href = "http://www.zhaiker.cn"
+            }else{
+                var getSign = setInterval(function(){
+                    
+                    var signWord = getSignData();
+//                    var signWord = 'OKveW0u2NSvwXsjetkD5cRgt/zH8HYd9/zcjlH8+zmdLOKypgeJyBzkn5oG1lIbtMYMCsdZp6iqnyOiuYzPsjw==';
+
+                    if(signWord!=''){
+                        teseloae(signWord);
+                        clearInterval(getSign);
+                    }
+                },500);
+            }
+    })
+   
+
+    
+    
+</script>
+</body>
+
+</html>

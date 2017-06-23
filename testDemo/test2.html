@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <meta content="text/html; charset=utf-8" http-equiv="content-type">
+        <title>
+            js调用java
+        </title>
+    </head>
+    
+    <body>
+    </body>
+    <script>
+        function connectWebViewJavascriptBridge(callback) {
+            if (window.WebViewJavascriptBridge) {
+                callback(WebViewJavascriptBridge)
+            } else {
+                document.addEventListener(
+                    'WebViewJavascriptBridgeReady'
+                    , function() {
+                        callback(WebViewJavascriptBridge)
+                    },
+                    false
+                );
+            }
+        }
+        connectWebViewJavascriptBridge(function(bridge) {
+			bridge.init(function(message, responseCallback) {
+                console.log('JS got a message', message);
+                var data = {
+                    'Javascript Responds': '测试中文!'
+                };
+                console.log('JS responding with', data);
+                responseCallback(data);
+            });
+		
+			//java调用js
+            bridge.registerHandler("functionInJs", function(data, responseCallback) {
+            	alert(data);
+                var responseData = "adadadadad -> aaaaaa";
+                responseCallback(responseData);
+            });
+        })
+    </script>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta name="MobileOptimized" content="320"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>排行榜</title>
+     <link href="//cdn.bootcss.com/Swiper/3.3.1/css/swiper.min.css" rel="stylesheet">
+<link href="css/app.css" rel="stylesheet"></head>
+<body>
+   <div class="jife" onclick="goSource()"><img src="img/wodejif.png" alt=""></div>
+    <div id="rakl" v-cloak>
+        <div class="ranktopmune">
+            <div class="ranktopmune_item rankitem" val="ra" @click="fatburnView">燃脂榜</div>
+            <div class="ranktopmune_item" val="da"  @click="signView">签到榜</div>
+            <div class="ranktopmune_item" val="re"  @click="hotView">人气榜</div>
+        </div>
+        <div class="zhanwei"></div>
+        <div class="topbang">
+            <div class="topbang_item">
+                <div v-if="secondSex=='M'" class="er nan_border" onClick=toRankUserInfo(\'{{secondUserId}},{{secondHeadImg}},{{secondHikeName}}'\)><img :src="secondImg" alt=""></div>
+                <div v-else class="er nv_border" onClick=toRankUserInfo(\'{{secondUserId}},{{secondHeadImg}},{{secondHikeName}}'\)><img :src="secondImg" alt=""></div>
+                <div class="blues" v-text="secondName">-</div>
+                <div class="pink"><span v-text="secondKcal">-</span></div>
+            </div>
+            <div class="topbang_item">
+                <div v-if="firstSex=='M'" class="yi nan_border" onClick=toRankUserInfo(\'{{firstUserId}},{{firstHeadImg}},{{firstHikeName}}'\)><img :src="firstImg" alt=""></div>
+                <div v-else class="yi nv_border" onClick=toRankUserInfo(\'{{firstUserId}},{{firstHeadImg}},{{firstHikeName}}'\)><img :src="firstImg" alt=""></div>
+                <div class="blues" v-text="firstName">-</div>
+                <div class="pink"><span v-text="firstKcal">-</span></div>
+            </div>
+            <div class="topbang_item">
+                <div v-if="thridSex=='M'" class="sa nan_border" onClick=toRankUserInfo(\'{{thridUserId}},{{thridHeadImg}},{{thridHikeName}}'\)><img :src="thridImg" alt=""></div>
+                <div v-else class="sa nv_border" onClick=toRankUserInfo(\'{{thridUserId}},{{thridHeadImg}},{{thridHikeName}}'\)><img :src="thridImg" alt=""></div>
+                <div class="blues" v-text="thridName">-</div>
+                <div class="pink"><span v-text="thridKcal">-</span></div>
+            </div>
+        </div>
+            <!-- Swiper -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <ul class="ukl" id="lis">
+                        <li v-for="todo in todos">
+                            <div class="muns" v-text="todo.rank"></div>
+                            <div class="imgs" onClick=toRankUserInfo(\'{{todo.userId}},{{todo.headImg}},{{todo.nikeName}}'\)><img v-if="todo.sex=='F'" class="nv_border" :src="todo.headIcon"><img v-else class="nan_border" :src="todo.headIcon"></div>
+                            <div class="niname" v-text="todo.userName">-</div>
+                            <div class="xiaoh"><span v-text="todo.rankValue"></span></div>
+                        </li>                                         
+                    </ul>
+                </div>
+            </div>
+            <!-- Add Scroll Bar -->
+<!--            <div class="swiper-scrollbar"></div>-->
+        </div>
+        
+        <!-- Swiper JS -->
+        <div class="botbg">
+            <ul class="ukl" style="margin-top: 5px;">
+                <li style="border:none; padding-bottom: 0; position: relative; bottom: 5px;" v-if="meName!=''">
+                    <div class="muns" v-text="merank">-</div>
+                    <div class="imgs"><img v-if="meSex=='F'" class="nv_border" :src="meImg" alt=""><img v-else class="nan_border" :src="meImg" alt=""></div>
+                    <div class="niname" v-text="meName">-</div>
+                    <div class="xiaoh" v-text="meKcal"></div>
+                </li>
+                <li style="border:none; padding-bottom: 0; position: relative; bottom: 5px;" v-if="meName==''">
+                    <div class="niname" style="text-align:center;width:100%;color:#fa594f">您当前没有排名</div>
+                </li>                    
+            </ul>
+        </div>
+    </div>
+<script src="//cdn.bootcss.com/Swiper/3.3.1/js/swiper.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/vue.js"></script>
+<script type="text/javascript" src="js/ranklist.js"></script></body>
+</html>

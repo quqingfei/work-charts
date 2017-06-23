@@ -1,0 +1,132 @@
+<!doctype html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <style type="text/css">
+      body,html,#container{
+        height: 100%;
+        margin: 0px;
+      }
+       #panel {
+        position: fixed;
+        background-color: white;
+        max-height: 90%;
+        overflow-y: auto;
+        top: 10px;
+        right: 10px;
+        width: 280px;
+     }
+    </style>
+    <title>快速入门</title>
+  </head>
+  <body>
+    <div id="container" tabindex="0"></div>
+    <div id="panel"></div>
+    <script src="place.js"></script>
+    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=c7d7e1d4684b006b49de67bbcd80694c"></script>
+    <script type="text/javascript">
+        var map = new AMap.Map('container',{
+            resizeEnable: true,
+            zoom: 10,
+            center: [114.09969, 22.69835]
+        });
+        var sicon = new AMap.Icon({
+            image: './img/s.png',//start
+            size: new AMap.Size(24, 30)
+        })
+        var eicon = new AMap.Icon({
+            image: './img/e.png',//end
+            size: new AMap.Size(24, 30)
+        })
+        var info = new AMap.InfoWindow({
+            content:"",
+            autoMove:true,
+            offset:new AMap.Pixel(0,-28)
+        })
+        var circle = function(long,degree){
+            var arr  = [long,degree]
+            return new AMap.Circle({
+                center: arr,
+                radius: 4,
+                strokeColor: "#FFA500", //边框线颜色
+                strokeOpacity: 0.3,       //边框线透明度
+                strokeWeight: 3,        //边框线宽
+                fillColor: "#fff", //填充色
+                fillOpacity: 0.6,//填充透明度
+                zIndex:99,
+                map:map
+            })
+        }
+        var marker = function(long,degree,sicon){
+            var arr  = [long,degree]
+            return  new AMap.Marker({
+                        icon: sicon,
+                        position: arr,
+                        map:map,
+                        topWhenClick:true,
+                        clickable:true
+                    });
+        }
+           var line = [],eles = [];
+        for(var i=0;i<place.length;i++){
+            if(i==0){
+                var s = marker(place[i].long,place[i].degree,sicon);
+                eles.push(s)
+            }else if(i==place.length-1){   
+                var e = marker(place[i].long,place[i].degree,eicon)
+                eles.push(e)
+            }else{                
+                eles.push(circle(place[i].long,place[i].degree))
+            }
+            var s = [];
+            s[0] = place[i].long
+            s[1] = place[i].degree
+            line[i] = s;
+//            console.log("经度"+place[i].long+"纬度"+place[i].degree)
+        }
+//            console.log(eles)
+            eles.forEach(function(e,i){
+                e.on('click', function() {
+                    info.setContent("时间:"+place[i].time+"<br/>速度："+place[i].speed);
+                    if(i<=0 || i>=eles.length-1){
+                        info.open(map,e.getPosition());
+                    }else{                        
+                        info.open(map,e.getCenter());
+                    }
+                });
+            })
+        
+        var polyline = new AMap.Polyline({
+                path:line,
+                strokeColor:'#2196F3',
+                strokeOpacity:0.8,
+                strokeWeight:10,
+                strokeStyle:'solid',
+                strokeDasharray:[10,5],
+                lineJoin:'round',
+                showDir:true,
+                map:map,
+                geodesic:true
+            })
+//        marker()
+//        polyline.setMap(map);
+        map.setFitView();
+       
+      /*  var circle = new AMap.Circle({
+            center: [114.09969, 22.69835],
+            radius: 100,
+            fillOpacity:0.2,
+            strokeWeight:2,
+            map:map
+        })
+        circle.setMap(map);
+        
+        var info = new AMap.InfoWindow({
+            content:"信息窗体<br>这里是方恒科技大厦",
+            offset:new AMap.Pixel(0,-28)
+        })
+        info.open(map,marker.getPosition())*/
+    </script>
+  </body>
+</html>

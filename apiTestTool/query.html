@@ -1,0 +1,74 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>运动数据查询</title>
+<link rel="icon" href="css/favicon.ico">
+<link rel="stylesheet" type="text/css"
+	href="easyui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="easyui/themes/icon.css">
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="js/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="js/validatebox.js"></script>
+<script type="text/javascript" src="js/querybiz.js"></script>
+</head>
+<body>
+	<table id="dg" class="easyui-datagrid" style="width: 100%; height: 500px;"
+		url="" title="运动数据查询" showFooter="true"
+		toolbar="#tb" singleSelect="true" fitColumns="true">
+		<thead>
+			<tr>
+				<th data-options="field:'steps',align:'center',width:80">踏步数</th>
+				<th data-options="field:'usedTime',align:'center',width:80">使用时长</th>
+				<th data-options="field:'calorie',align:'center',width:80">卡路里</th>
+				<th data-options="field:'uploadTime',align:'center',formatter: formatUploadTime,sortable:true,width:80">踏步机上传时间</th>
+				<th data-options="field:'gmtCreate',align:'center',formatter: formatDate,sortable:true,width:80">手机上传时间</th>
+				<th data-options="field:'gmtModify',align:'center',formatter: formatDate,sortable:true,width:80">最后修改时间</th>
+			</tr>
+		</thead>
+	</table>
+
+	<div id="tb" style="padding: 5px; height: auto">
+		<div>
+			<table>
+				<tr>
+					<td>手机号码 : <input id="phone" class="easyui-textbox"
+						data-options="validType:'Mobile',onChange:phoneChange"
+						style="width: 95px" maxlength="11">
+					</td>
+					<td>
+						<div class="datagrid-btn-separator"></div>
+					</td>
+					<td>关系用户: <input id="relations" class="easyui-combobox" style="width: 100px"
+						data-options="valueField:'id',textField:'text',
+		data: [{
+			id: '',
+			text: '---请选择---'
+		}]">
+					</td>
+					<td>
+						<div class="datagrid-btn-separator"></div>
+					</td>
+					<td>类型: <select id="dateType" class="easyui-combobox"
+						style="width: 100px;">
+							<option value="uploadTime">踏步机上传</option>
+							<option value="gmtCreate">手机上传</option>
+					</select>
+					</td>
+					<td>
+						<div class="datagrid-btn-separator"></div>
+					</td>
+					<td>时间 从: <input id="startDate" class="easyui-datebox" style="width: 100px">
+						到: <input id="endDate" class="easyui-datebox" style="width: 100px">
+					</td>
+					<td>
+						<div class="datagrid-btn-separator"></div>
+					</td>
+					<td><a href="javascript:void(0)" onclick="searchData()"
+						class="easyui-linkbutton" iconCls="icon-search">查询</a></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

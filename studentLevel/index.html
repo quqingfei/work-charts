@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <link rel="stylesheet" href="./css/css.css">
+    <title>学员评价</title>
+</head>
+<body>
+   <div class="main">
+
+    <div class="topUserInfo">
+        <div class="floatL userLeft">
+            <span class="gary1px"><img id="coachIcon" src="./img/demo.jpg" alt=""><i class="icon"><img src="./img/mingxing.png" alt=""></i></span>
+        </div>
+        <div class="floatL userRight">
+           <div class="userinfo">
+               <div class="userName"><span id="userName">-</span><img id="sex" src="" alt=""></div>
+               <!-- <div class="userDes">训练课程：燃脂训练课 第二节</div>-->
+           </div>            
+        </div>
+    </div>
+    <div class="titles">
+        <span class="line1"></span>
+        <div class="ndud">评价教练</div>
+    </div>
+    <div class="eval">
+        <div class="voer topm1">
+            <div class="floatL voerleft">专业评价</div>
+            <div class="floatL voerright" id="profession">
+                <img src="./img/xing.png" alt="">
+                <img src="./img/xing.png" alt="">
+                <img src="./img/xing.png" alt="">
+                <img src="./img/xing.png" alt="">
+                <img src="./img/xing.png" alt="">
+            </div>
+        </div>
+        <div class="voer topm26">
+            <div class="floatL voerleft">专业评价</div>
+            <div class="floatL voerright" id="server">
+                <img src="./img/xing.png" alt="">
+                <img src="./img/xing.png" alt="">
+                <img src="./img/xing.png" alt="">
+                <img src="./img/xing.png" alt="">
+                <img src="./img/xing.png" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="textarea">
+        <textarea name="" id="" cols="30" rows="10" placeholder="留言提交后将所有人可见，不填将默认好评"></textarea>
+    </div>
+<!--    <div class="pingjia"><input class="checkbox" type="checkbox"><lable class="checkbox" id="nike" is='0'>匿名评价</lable></div>-->
+    <div class="btn"><a href="javascript:;" id="submit">提交</a></div>
+           
+   </div>
+</body>
+<script src="js/jquery-1.8.3.min.js"></script>
+<script>
+
+function getSignData(){
+        if (!window.WebViewJavascriptBridge) {
+            return false;
+        }
+        window.WebViewJavascriptBridge.callHandler('getSign', {},
+            function(responseData) {
+                deviceData = responseData;
+            });
+            return deviceData;
+}
+
+function connectWebViewJavascriptBridge(callback) {
+    if (window.WebViewJavascriptBridge) {
+        callback(WebViewJavascriptBridge);
+    } else {
+        document.addEventListener('WebViewJavascriptBridgeReady', function() {
+            callback(WebViewJavascriptBridge);
+        }, false);
+    }
+}
+connectWebViewJavascriptBridge(function(bridge) {
+    // 初始化
+    bridge.init(function(message, responseCallback) {
+        var data = {
+            'Javascript Responds': 'backBefore'
+        };
+        responseCallback(data);
+    });
+});
+// rem
+(function (doc, win) {
+    var docEl = doc.documentElement,
+        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+        recalc = function () {
+            var clientWidth = docEl.clientWidth;
+            if(clientWidth>640){
+                clientWidth = 640;
+                $('.main').css('width','640px');
+            }
+            if (!clientWidth) return;
+            docEl.style.fontSize = 20 * (clientWidth / 640) + 'px';
+        };
+
+    if (!doc.addEventListener) return;
+    win.addEventListener(resizeEvt, recalc, false);
+    doc.addEventListener('DOMContentLoaded', recalc, false);
+})(document, window);
+     // 获取url中的参数
+function getUrlParam(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); // 构造一个含有目标参数的正则表达式对象
+    var r = window.location.search.substr(1).match(reg); // 匹配目标参数
+    if (r != null)
+        return unescape(r[2]);
+    return null; // 返回参数值
+}    
+$(document).ready(function(){
+    var starPro = 5;
+    var starSer = 5;
+    var coachId = null;
+    
+      var sis = setInterval(function(){
+        var sign = getSignData();
+//      sign = 'OKveW0u2NSvwXsjetkD5cYnktBc/DJfnEWN3BiQVBbacg1HYv+hTzRqRGPn05xARA2lbV0M5s5l9VnhxArMVJA==';
+        if(sign){
+            clearInterval(sis);
+            $.ajax({
+                type:'post',
+                url:'../evaluation/EvaluationAction!getCoachInfo.zk',//get coach info
+                data:{gymId:getUrlParam('gymId')},
+                dataType:'json',
+                success: function(res){
+                    if(res.STATUS){
+                        var json = eval('(' + res.coach + ')');
+                    }
+                    coachId = json.userId;
+                    $('#coachIcon').attr('src','../file/FileCenter!showImage2.zk?name='+json.headIcon);
+                    $('#userName').text(json.userName);
+                    if(json.sex == "M"){
+                        $('#sex').attr('src','./img/man.png');
+                    }else{
+                        $('#sex').attr('src','./img/woman.png');
+                    }
+                }
+            })
+                $.ajax({
+                    type: 'post',
+                    data: {sign:encodeURI(sign)},
+                    url: '../fatburn/ScoreAction!checkSign.zk',
+                    dataType: 'json',
+                    success: function(data){
+                        if(data.STATUS){
+                            $.ajax({
+                                type:'post',
+                                url:'../evaluation/EvaluationAction!isAdd.zk',
+                                data:{gymId:getUrlParam('gymId'),date:getUrlParam('date')},
+                                dataType:'json',
+                                success: function(res){
+                                    var isEval = res.isAdd;
+                                    if(isEval == 'y'){//yes eval
+                                        $('.btn').hide();
+                                        $.ajax({
+                                            type:'post',
+                                            url:'../evaluation/EvaluationAction!get.zk',//get eval
+                                            data:{gymId:getUrlParam('gymId'),date:getUrlParam('date')},
+                                            dataType:'json',
+                                            success: function(res){
+                                                if(res.STATUS){
+                                                    starClick('#profession',res.Evaluation.professional);
+                                                    starClick('#server',res.Evaluation.service);
+                                                    if(res.Evaluation.isDeleted=='n'){
+                                                        $('.textarea textarea').val(res.Evaluation.evaluationMsg);
+                                                    }else{
+                                                        $('.textarea textarea').val('评论已被删除！');
+                                                    }                            
+                                                    $('.textarea textarea').attr('readOnly','true');
+                                                    $('.textarea textarea').css({'border':'none'});
+                                                }
+                                            }
+                                        })
+                                    }else if(isEval == 'n'){//no eval
+                                        $('.btn').show();
+                                        $('#profession img').on('click',function(){
+                                            var index = $(this).index();//index是星级下标        
+                                            starPro = starClick('#profession',index);
+                                        });
+                                        $('#server img').on('click',function(){
+                                            var index = $(this).index();//index是星级下标        
+                                            starSer = starClick('#server',index);
+                                        });
+                                        $('#submit').click(function(){
+                        //                    var s = $('input[type=checkbox]').prop('checked');
+                                            var text = $('.textarea textarea').val();
+                                            if(text == ""){
+                                                text = "默认好评！";
+                                            }
+                                            console.log(starPro+","+starSer+","+text+","+coachId+','+getUrlParam('gymId'));
+
+                                            $.ajax({
+                                                type:'post',
+                                                url:'../evaluation/EvaluationAction!add.zk',//add eval
+                                                data:{professional:starPro,service:starSer,gymId:getUrlParam('gymId'),coachId:coachId,evaluationMsg:text},
+                                                dataType:'json',
+                                                success: function(res){
+                                                    if(res.STATUS){
+                                                        alert('评价成功!')
+                                                        $('.btn').hide();
+                                                        $('#profession img').off('click');
+                                                        $('#server img').off('click');
+                                                        $('.textarea textarea').attr('readOnly','true');
+                                                        $('.textarea textarea').css({'border':'none'});
+                                                    }
+                                                }
+                                            })
+                                        })
+
+                                    }
+                                }
+                            })
+                        }
+                    }
+                })
+        }
+    },300);
+    
+    //是否匿名
+/*    $('#nike').click(function(){
+        var is = $(this).attr('is');
+        if(is==1){
+            $('input[type=checkbox]').prop('checked',false);
+            $(this).attr('is',0);
+        }else{
+           $('input[type=checkbox]').prop('checked',true); 
+            $(this).attr('is',1);
+        }        
+    })*/
+    
+    function starClick(el,index){
+        var imgList = $(el).find('img');
+        $.each(imgList, function(i, item){
+            $(item).attr('src','./img/xing0.png');
+            if(index>=i){
+                $(item).attr('src','./img/xing.png');
+            }
+        })
+        return index+1;
+    }
+})    
+</script>
+</html>

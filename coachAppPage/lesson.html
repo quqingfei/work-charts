@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="flexible" content="initial-dpr=1,maximum-dpr=3" /> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> -->
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script>
+    <title>课程详情</title>
+    <!-- <script src="http://g.tbcdn.cn/mtb/lib-flexible/0.3.4/??flexible_css.js,flexible.js"></script> -->
+    <script src="js/dpr.js"></script>
+    <link rel="stylesheet" href="css/normal.css">
+    <link rel="stylesheet" href="css/lesson.css">
+</head>
+
+<body>
+    <!-- <div ></div> -->
+    <span class="preloader" id="cover" style="width:1rem;height:1rem;  position: fixed;  left: 50%;  top: 50%;  margin-left: -.5rem;  margin-top: -.5rem; z-index:100"></span>
+    <ul>
+        <li class="swiper swiper-int"></li>
+        <!-- <li class="swiper">2</li>
+        <li class="swiper">3</li>
+        <li class="swiper">4</li>
+        <li class="swiper">5</li> -->
+    </ul>
+    <div class="lesson-info">
+        <h2></h2>
+        <p class="coache">教练：<span id="coachName" style="color:#333;">-</span></p>
+        <span>时长：<span id="month">0</span>分钟&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <div class="media320"></div>
+        <span>强度：</span>
+        <div id="power">
+            <img src="img/Lightning.png" alt="">
+            <img src="img/Lightning.png" alt="">
+            <img src="img/Lightning.png" alt="">
+            <img src="img/Lightning.png" alt="">
+            <img src="img/Lightning.png" alt="">
+        </div>
+<!--        <div id="level">等级LV. <span></span></div>-->
+        <p>最多人数：<span id="maxP">-</span>人<font class="side">满<a id="minp">-</a>人开课</font><font class="lde">报名人数：<span id="people">0</span></font></p>
+    </div>
+    <div class="lesson-intro">
+        <h3>课程详情：</h3>
+        <img id="introPic">
+    </div>
+<!--    <div class="odled">购买</div>-->
+    <script src="js/zepto.min.js"></script>
+    <script src="js/lesson.js"></script>
+</body>
+
+</html>
