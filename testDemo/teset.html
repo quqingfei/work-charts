@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="my_canvas" width="1166" height="768"> your browser does not support canvas </canvas>
+    <button id="my_btn">Another Circle</button>
+</body>
+<script>
+    var context = document.getElementById("my_canvas");
+    context = context.getContext("2d");
+    var circles = [];
+    var width = document.documentElement.clientWidth;
+    var height = document.documentElement.clientHeight;
+    var max_radius = document.documentElement.clientWidth/30*2;
+    var min_radius = document.documentElement.clientWidth/30;
+    var count = 0;
+    window.onload = function () {
+        var btn = document.getElementById("my_btn");
+        btn.onclick = function () {
+            var time = new Date();
+            start = time.getTime();
+            make_circle();
+        }
+    }
+
+    function Circle(x, y, r, color) {
+        this.x = x;
+        this.y = y;
+        this.r = r;
+        this.color = color;
+    }
+
+    function make_circle() {
+        var x = Math.floor(Math.random() * width) + 1;
+        var y = Math.floor(Math.random() * height) + 1;
+        var r = Math.floor(Math.random() * (max_radius - min_radius)) + min_radius;
+        var color = "rgb(" + (Math.floor(Math.random() * 256)) + "," + (Math.floor(Math.random() * 256)) + "," + (Math.floor(Math.random() * 256)) + ")"; //make different color
+        var circle = new Circle(x, y, r, color);
+        if (test1(circle) && test2(circle)) {
+            circles.push(circle);
+            context.strokeStyle = color;
+            context.beginPath();
+            context.arc(x, y, r, 0, Math.PI * 2, true);
+            context.closePath();
+            context.stroke();
+            count = 0;
+        }
+        else {
+            count++;
+            if (count > 10000) { //if it loops too many times,we can assume that there is no space for new circle
+                alert("no more circle");
+                return false;
+            }
+            make_circle();
+        }
+    }
+
+    function test1(circle) { //判断圆与圆之间是否相交
+        var len = circles.length;
+        for (var i = 0; i < len; i++) {
+            var x1 = circles[i].x;
+            var y1 = circles[i].y;
+            var r1 = circles[i].r;
+            var x2 = circle.x;
+            var y2 = circle.y;
+            var r2 = circle.r;
+            if ((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2) < (r2 + r1) * (r2 + r1)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function test2(circle) { //test if the new circle touchs the border 
+        if ((circle.x + circle.r) > width || (circle.y + circle.r) > height || (circle.x - circle.r) < 0 || (circle.y - circle.r) < 0) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+</script>
+
+</html>
